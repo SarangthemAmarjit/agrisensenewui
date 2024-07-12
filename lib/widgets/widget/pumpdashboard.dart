@@ -195,7 +195,8 @@ class PumpWidget extends StatelessWidget {
                                             totalSwitches: 2,
                                             labels: const ['OFF', 'ON'],
                                             radiusStyle: true,
-                                            onToggle: controller.field1 == '1'
+                                            onToggle: controller.field1 == '2' ||
+                                                    controller.field1.isEmpty
                                                 ? (index) {
                                                     controller.setpump(
                                                         pumpstatus: false,
@@ -293,8 +294,7 @@ class PumpWidget extends StatelessWidget {
                                             ],
                                             activeFgColor: Colors.white,
                                             inactiveBgColor:
-                                                const Color.fromARGB(
-                                                    255, 58, 60, 62),
+                                                const Color.fromARGB(255, 58, 60, 62),
                                             inactiveFgColor: Colors.white,
                                             initialLabelIndex: controller.field1 == "0"
                                                 ? controller.field8.isEmpty || controller.field8 == '0' || controller.field8 == '2'

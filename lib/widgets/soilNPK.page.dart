@@ -35,52 +35,59 @@ class WebSoilNpkPage extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return GetBuilder<GetxTapController>(builder: (_) {
-      return Expanded(
-        child: Card(
-          elevation: 10,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6),
-                child: Center(
-                    child: SfCartesianChart(
-                        legend: const Legend(
-                          position: LegendPosition.top,
-                          isResponsive: true,
-                          isVisible: true,
-                        ),
-                        zoomPanBehavior: controller.zoomPanBehavior,
-                        primaryXAxis: const DateTimeAxis(
-                            autoScrollingMode: AutoScrollingMode.end,
-                            initialZoomPosition: 1,
-                            initialZoomFactor: 0.01),
-                        series: <CartesianSeries>[
-                      // Renders line chart
-                      LineSeries<SoilNPK, DateTime>(
-                          legendItemText: "Nitrogen",
-                          color: Colors.red,
-                          dataSource: _getData(controller: controller),
-                          xValueMapper: (SoilNPK soilnpk, _) => soilnpk.time,
-                          yValueMapper: (SoilNPK N, _) => N.N),
-                      LineSeries<SoilNPK, DateTime>(
-                          animationDelay: 300,
-                          color: Colors.green,
-                          legendItemText: "Phosphorous",
-                          dataSource: _getData(controller: controller),
-                          //  chartData,
-                          xValueMapper: (SoilNPK soilnpk, _) => soilnpk.time,
-                          yValueMapper: (SoilNPK P, _) => P.P),
-                      LineSeries<SoilNPK, DateTime>(
-                          animationDelay: 600,
-                          color: Colors.blue,
-                          legendItemText: "Potassium",
-                          dataSource: _getData(controller: controller),
-                          //  chartData,
-                          xValueMapper: (SoilNPK soilnpk, _) => soilnpk.time,
-                          yValueMapper: (SoilNPK K, _) => K.K)
-                    ]))),
+      return Column(
+        children: [
+          Expanded(
+            child: Card(
+              elevation: 10,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 6),
+                    child: Center(
+                        child: SfCartesianChart(
+                            legend: const Legend(
+                              position: LegendPosition.top,
+                              isResponsive: true,
+                              isVisible: true,
+                            ),
+                            zoomPanBehavior: controller.zoomPanBehavior,
+                            primaryXAxis: const DateTimeAxis(
+                                autoScrollingMode: AutoScrollingMode.end,
+                                initialZoomPosition: 1,
+                                initialZoomFactor: 0.01),
+                            series: <CartesianSeries>[
+                          // Renders line chart
+                          LineSeries<SoilNPK, DateTime>(
+                              legendItemText: "Nitrogen",
+                              color: Colors.red,
+                              dataSource: _getData(controller: controller),
+                              xValueMapper: (SoilNPK soilnpk, _) =>
+                                  soilnpk.time,
+                              yValueMapper: (SoilNPK N, _) => N.N),
+                          LineSeries<SoilNPK, DateTime>(
+                              animationDelay: 300,
+                              color: Colors.green,
+                              legendItemText: "Phosphorous",
+                              dataSource: _getData(controller: controller),
+                              //  chartData,
+                              xValueMapper: (SoilNPK soilnpk, _) =>
+                                  soilnpk.time,
+                              yValueMapper: (SoilNPK P, _) => P.P),
+                          LineSeries<SoilNPK, DateTime>(
+                              animationDelay: 600,
+                              color: Colors.blue,
+                              legendItemText: "Potassium",
+                              dataSource: _getData(controller: controller),
+                              //  chartData,
+                              xValueMapper: (SoilNPK soilnpk, _) =>
+                                  soilnpk.time,
+                              yValueMapper: (SoilNPK K, _) => K.K)
+                        ]))),
+              ),
+            ),
           ),
-        ),
+        ],
       );
     });
   }

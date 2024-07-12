@@ -522,6 +522,7 @@ class GetxTapController extends GetxController {
       _ismanual = !_ismanual;
       update();
     }
+    log('ISmanual :' + _ismanual.toString());
     log('Field 2 ${_latestfeeddata!.field2}');
     try {
       final queryParameters = {
