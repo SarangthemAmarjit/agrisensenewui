@@ -41,51 +41,58 @@ class WebCommonGraphPage extends StatelessWidget {
     // ];
 
     return GetBuilder<GetxTapController>(builder: (_) {
-      return Expanded(
-        child: Card(
-          elevation: 10,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6),
-                child: Center(
-                    child: SfCartesianChart(
-                        tooltipBehavior: TooltipBehavior(
-                          enable: true,
-                        ),
-                        zoomPanBehavior: controller.zoomPanBehavior,
-                        primaryXAxis: const DateTimeAxis(
-                            autoScrollingMode: AutoScrollingMode.end,
-                            initialZoomPosition: 1,
-                            initialZoomFactor: 0.01),
-                        series: <CartesianSeries>[
-                      // Renders line chart
-                      LineSeries<Moisture, DateTime>(
-                          isVisibleInLegend: true,
-                          initialIsVisible: true,
-                          name: index == 0
-                              ? "Moisture Level"
-                              : index == 1
-                                  ? "Temperature"
-                                  : index == 2
-                                      ? "pH Level"
-                                      : "",
-                          enableTooltip: true,
-                          markerSettings: const MarkerSettings(isVisible: true),
-                          dataLabelSettings: const DataLabelSettings(
-                              isVisible: true,
-                              labelPosition: ChartDataLabelPosition.inside),
-                          dataSource:
+      return Column(
+        children: [
+          Expanded(
+            child: Card(
+              elevation: 10,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 6),
+                    child: Center(
+                        child: SfCartesianChart(
+                            tooltipBehavior: TooltipBehavior(
+                              enable: true,
+                            ),
+                            zoomPanBehavior: controller.zoomPanBehavior,
+                            primaryXAxis: const DateTimeAxis(
+                                autoScrollingMode: AutoScrollingMode.end,
+                                initialZoomPosition: 1,
+                                initialZoomFactor: 0.01),
+                            series: <CartesianSeries>[
+                          // Renders line chart
+                          LineSeries<Moisture, DateTime>(
+                              isVisibleInLegend: true,
+                              initialIsVisible: true,
+                              name: index == 0
+                                  ? "Moisture Level"
+                                  : index == 1
+                                      ? "Temperature"
+                                      : index == 2
+                                          ? "pH Level"
+                                          : "",
+                              enableTooltip: true,
+                              markerSettings:
+                                  const MarkerSettings(isVisible: true),
+                              dataLabelSettings: const DataLabelSettings(
+                                  isVisible: true,
+                                  labelPosition: ChartDataLabelPosition.inside),
+                              dataSource:
 
-                              //! above codes to be used for dateTime
-                              // moisturChartData,
-                              _getData(index: index, controller: controller),
-                          xValueMapper: (Moisture moisture, _) => moisture.time,
-                          yValueMapper: (Moisture moisture, _) =>
-                              moisture.moisture)
-                    ]))),
+                                  //! above codes to be used for dateTime
+                                  // moisturChartData,
+                                  _getData(
+                                      index: index, controller: controller),
+                              xValueMapper: (Moisture moisture, _) =>
+                                  moisture.time,
+                              yValueMapper: (Moisture moisture, _) =>
+                                  moisture.moisture)
+                        ]))),
+              ),
+            ),
           ),
-        ),
+        ],
       );
     });
   }

@@ -3,6 +3,7 @@ import 'package:fitness_dashboard_ui/widgets/overviewpage.dart';
 import 'package:fitness_dashboard_ui/widgets/header_widget.dart';
 import 'package:fitness_dashboard_ui/widgets/graph.dart';
 import 'package:fitness_dashboard_ui/widgets/historypage.dart';
+import 'package:fitness_dashboard_ui/widgets/widget/pumpdashboard.dart';
 import 'package:flutter/material.dart';
 
 class DashboardWidget extends StatelessWidget {
@@ -22,7 +23,10 @@ class DashboardWidget extends StatelessWidget {
             const SizedBox(height: 18),
             const LineChartCard(),
             const SizedBox(height: 18),
-            if (Responsive.isTablet(context)) const SummaryWidget(),
+            if (Responsive.isTablet(context)) const PumpWidget(),
+            // SizedBox(height: 16),
+            // SummaryDetails(),
+            SizedBox(height: 40),
           ],
         ),
       ),
