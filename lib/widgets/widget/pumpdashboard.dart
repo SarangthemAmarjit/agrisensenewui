@@ -158,6 +158,8 @@ class PumpWidget extends StatelessWidget {
                                               child:
                                                   CircularProgressIndicator(),
                                             ))
+
+                                        //THIRD PART AFTER PUSHING TURN OFF
                                         : ToggleSwitch(
                                             changeOnTap: true,
                                             minWidth: 55,
@@ -195,13 +197,14 @@ class PumpWidget extends StatelessWidget {
                                             totalSwitches: 2,
                                             labels: const ['OFF', 'ON'],
                                             radiusStyle: true,
+                                            //THIRD PART AFTER PUSHING TURN OFF
                                             onToggle: controller.field1 == '2' ||
                                                     controller.field1.isEmpty
                                                 ? (index) {
                                                     controller.setpump(
-                                                        pumpstatus: false,
+                                                        pumpstatus: true,
                                                         context: context,
-                                                        ispumboffff: true);
+                                                        ispumboffff: false);
                                                   }
                                                 : (index) {
                                                     controller
@@ -262,6 +265,8 @@ class PumpWidget extends StatelessWidget {
                                                 totalSwitches: 2,
                                                 labels: const ['OFF', 'ON'],
                                                 radiusStyle: true,
+                                                //AFTER POWER ON TOGGLE PART
+                                                //2ND TOGGLE PART
                                                 onToggle: controller.field1 ==
                                                         '1'
                                                     ? (index) {
@@ -306,6 +311,7 @@ class PumpWidget extends StatelessWidget {
                                             totalSwitches: 2,
                                             labels: const ['OFF', 'ON'],
                                             radiusStyle: true,
+                                            //FIRST TOGGLE PART
                                             onToggle: controller.field1 == '2' || controller.field1 == '1'
                                                 ? (index) {
                                                     controller.setpump(

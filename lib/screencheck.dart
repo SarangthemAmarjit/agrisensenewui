@@ -13,14 +13,7 @@ class ResponsivePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GetxTapController controller = Get.put(GetxTapController());
-
-    return Scaffold(body: GetBuilder<GetxTapController>(builder: (_) {
-      return controller.isserverok
-          ? Responsive.isMobile(context)
-              ? HomePage()
-              : MainScreen()
-          : ServerErrorPage();
-    }));
+    return Scaffold(
+        body: Responsive.isMobile(context) ? HomePage() : MainScreen());
   }
 }

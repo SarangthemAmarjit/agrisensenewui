@@ -118,9 +118,9 @@ class GetxTapController extends GetxController {
     Future.delayed(const Duration(seconds: 1))
         .whenComplete(() => FlutterNativeSplash.remove());
     if (_isserverok) {
-      _startTimer();
-      getlatestfeeddata();
-      getalldata();
+      // _startTimer();
+      // getlatestfeeddata();
+      // getalldata();
       getzoompan();
     }
   }
@@ -207,8 +207,8 @@ class GetxTapController extends GetxController {
   void _startTimer() {
     // Create a periodic timer that executes the function every 5 seconds
     _scheduletimer = Timer.periodic(const Duration(seconds: 5), (Timer timer) {
-      getlatestfeeddata();
-      getalldata();
+      // getlatestfeeddata();
+      // getalldata();
     });
   }
 
