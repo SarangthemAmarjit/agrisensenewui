@@ -48,47 +48,130 @@ class RadialIndicatorSoil extends StatelessWidget {
                   enableLoadingAnimation: true,
                   axes: <RadialAxis>[
                     RadialAxis(
-                      maximum: 12,
+                      maximum: 14,
 
                       annotations: [
                         GaugeAnnotation(
-                            widget: Text(
-                          value == null || value!.isEmpty
-                              ? 'N/A'
-                              : double.parse(value!) < 10
-                                  ? '0$value'
-                                  : value!,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 14),
-                        ))
+                            angle: 90,
+                            positionFactor: 0.5,
+                            widget: FittedBox(
+                              child: Column(
+                                children: [
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    value == null || value!.isEmpty
+                                        ? 'N/A'
+                                        : double.parse(value!) < 10
+                                            ? '0$value'
+                                            : value!,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: screenWidth < 800
+                                          ? screenWidth / 30
+                                          : screenWidth / 70,
+                                    ),
+                                  ),
+                                  Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    color: Colors.white,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 8,
+                                      ),
+                                      child: SizedBox(
+                                        width: screenWidth / 12,
+                                        child: Center(
+                                          child: Text(
+                                            value == null || value!.isEmpty
+                                                ? 'N/A'
+                                                : double.parse(value!) > 7.5
+                                                    ? 'Alkaline'
+                                                    : double.parse(value!) > 6.5
+                                                        ? 'Neutral'
+                                                        : 'Acidic',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: screenWidth < 800
+                                                  ? screenWidth / 30
+                                                  : screenWidth / 80,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ))
                       ],
+                      ticksPosition: ElementsPosition.inside,
+                      minimum: 0,
 
-                      showLabels: true,
+                      showLabels: true, // Show labels on the axis
+                      labelOffset: 10, // Offset to adjust label position
+                      ranges: <GaugeRange>[
+                        GaugeRange(
+                          gradient: SweepGradient(
+                            colors: <Color>[
+                              Colors.red.withOpacity(0.9),
+                              Colors.red.withOpacity(0.5),
+                            ],
+                          ),
+                          label: 'Acidic',
+                          labelStyle: const GaugeTextStyle(
+                              fontFamily: 'KulimPark',
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                          startValue: 0,
+                          endValue: 6.5,
+                        ),
+                        GaugeRange(
+                          color: Colors.yellow.withOpacity(0.9),
+                          labelStyle: const GaugeTextStyle(
+                              fontFamily: 'KulimPark',
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                          label: 'Neutral',
+                          startValue: 6.5,
+                          endValue: 7.5,
+                        ),
+                        GaugeRange(
+                          gradient: SweepGradient(
+                            colors: <Color>[
+                              Colors.blue.withOpacity(0.5),
+                              Colors.blue.withOpacity(0.9),
+                            ],
+                          ),
+                          labelStyle: const GaugeTextStyle(
+                              fontFamily: 'KulimPark',
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                          label: 'Alkaline',
+                          startValue: 7.5,
+                          endValue: 14,
+                        )
+                      ],
+                      useRangeColorForAxis: true,
+
                       showTicks: true,
                       // useRangeColorForAxis: true,
                       // ranges: [GaugeRange(startValue: double.parse(value), endValue: 100)],
                       pointers: <GaugePointer>[
-                        RangePointer(
-                          enableAnimation: true,
-                          animationType: AnimationType.bounceOut,
-                          value: value == null || value!.isEmpty
-                              ? 0.0
-                              : double.parse(value!),
-                          width: 0.15,
-                          sizeUnit: GaugeSizeUnit.factor,
-                          gradient: getPhLevelGradient(
-                            value == null || value!.isEmpty
+                        NeedlePointer(
+                            needleEndWidth: 4,
+                            knobStyle: const KnobStyle(borderWidth: 2),
+                            needleColor: const Color.fromARGB(255, 210, 86, 86),
+                            enableAnimation: true,
+                            animationDuration: 1500,
+                            animationType: AnimationType.bounceOut,
+                            value: value == null || value!.isEmpty
                                 ? 0.0
-                                : double.parse(value!),
-                          ),
-                        ),
-                        MarkerPointer(
-                          value: value == null || value!.isEmpty
-                              ? 0.0
-                              : double.parse(value!),
-                          markerType: MarkerType.circle,
-                          color: const Color.fromARGB(129, 135, 232, 232),
-                        )
+                                : double.parse(value!)),
                       ],
                     ),
                   ],

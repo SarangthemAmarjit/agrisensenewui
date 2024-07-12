@@ -95,13 +95,13 @@ class HumiditynTemp extends StatelessWidget {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
-                                  color: Colors.blueGrey,
+                                  color: Colors.white,
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 8,
                                     ),
                                     child: SizedBox(
-                                      width: screenwidth / 10,
+                                      width: screenwidth / 12,
                                       child: Center(
                                         child: Text(
                                           value == null || value!.isEmpty
@@ -120,10 +120,10 @@ class HumiditynTemp extends StatelessWidget {
                                                           ? 'Optimal'
                                                           : 'Low',
                                           style: TextStyle(
-                                            color: Colors.white,
+                                            color: Colors.black,
                                             fontSize: screenwidth < 800
                                                 ? screenwidth / 30
-                                                : screenwidth / 50,
+                                                : screenwidth / 80,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),

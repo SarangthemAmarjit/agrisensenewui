@@ -88,29 +88,29 @@ class CardWidgetforSoil extends StatelessWidget {
                             value: value,
                           ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                        flex: 1,
-                        child:
-                            SizedBox(height: 28, child: Image.asset(iconpath))),
-                    Expanded(
-                      flex: 1,
-                      child: Text(
-                        "Show more . .",
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color: Colors.grey[700],
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              )
+              // Padding(
+              //   padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Expanded(
+              //           flex: 1,
+              //           child:
+              //               SizedBox(height: 28, child: Image.asset(iconpath))),
+              //       Expanded(
+              //         flex: 1,
+              //         child: Text(
+              //           "Show more . .",
+              //           overflow: TextOverflow.ellipsis,
+              //           style: TextStyle(
+              //             color: Colors.grey[700],
+              //             fontWeight: FontWeight.bold,
+              //           ),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // )
             ],
           ),
 

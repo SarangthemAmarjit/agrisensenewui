@@ -25,6 +25,7 @@ dependencies:
   syncfusion_flutter_gauges: ^24.1.44
 
   syncfusion_flutter_charts: ^24.1.45
+  toggle_switch: ^2.3.0
 
 
 dev_dependencies:
