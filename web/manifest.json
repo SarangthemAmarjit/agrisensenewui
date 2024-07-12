@@ -1,6 +1,6 @@
 {
-    "name": "fitness_dashboard_ui",
-    "short_name": "fitness_dashboard_ui",
+    "name": "agrisensenewui",
+    "short_name": "agrisensenewui",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -97,8 +97,8 @@ class RadialData extends StatelessWidget {
               backgroundColor: Colors.white,
               isResponsive: true,
               position: LegendPosition.bottom,
-              overflowMode: LegendItemOverflowMode.wrap,
-              isVisible: true,
+              overflowMode: LegendItemOverflowMode.none,
+              isVisible: false,
             ),
             series: <CircularSeries>[
               // Renders radial bar chart

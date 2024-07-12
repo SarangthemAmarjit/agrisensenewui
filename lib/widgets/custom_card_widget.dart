@@ -1,4 +1,4 @@
-import 'package:fitness_dashboard_ui/const/constant.dart';
+import 'package:fitness_dashboard_ui/constant/constant.dart';
 import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {

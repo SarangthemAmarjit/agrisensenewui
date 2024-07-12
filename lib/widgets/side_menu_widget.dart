@@ -1,4 +1,4 @@
-import 'package:fitness_dashboard_ui/const/constant.dart';
+import 'package:fitness_dashboard_ui/constant/constant.dart';
 import 'package:fitness_dashboard_ui/data/side_menu_data.dart';
 import 'package:flutter/material.dart';
 
@@ -17,11 +17,32 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
     final data = SideMenuData();
 
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
       color: const Color(0xFF171821),
-      child: ListView.builder(
-        itemCount: data.menu.length,
-        itemBuilder: (context, index) => buildMenuEntry(data, index),
+      child: Column(
+        children: [
+          Expanded(
+            flex: 2,
+            child: Column(
+              children: [
+                Image.asset(
+                  'assets/images/splash.png',
+                  height: 80,
+                ),
+                SizedBox(
+                  height: 10,
+                )
+              ],
+            ),
+          ),
+          Expanded(
+            flex: 9,
+            child: ListView.builder(
+              itemCount: data.menu.length,
+              itemBuilder: (context, index) => buildMenuEntry(data, index),
+            ),
+          ),
+        ],
       ),
     );
   }
