@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:fitness_dashboard_ui/controller/pagecontroller.dart';
 import 'package:fitness_dashboard_ui/util/responsive.dart';
 import 'package:fitness_dashboard_ui/widgets/overviewpage.dart';
 import 'package:fitness_dashboard_ui/widgets/header_widget.dart';
@@ -8,12 +9,14 @@ import 'package:fitness_dashboard_ui/widgets/historypage.dart';
 import 'package:fitness_dashboard_ui/widgets/side_menu_widget.dart';
 import 'package:fitness_dashboard_ui/widgets/widget/pumpdashboard.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class DashboardWidget extends StatelessWidget {
   DashboardWidget({super.key});
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+    GetxPageControler controler = Get.put(GetxPageControler());
     return Scaffold(
       key: _scaffoldKey,
       drawer: Responsive.isMobile(context) || Responsive.isTablet(context)
@@ -30,7 +33,9 @@ class DashboardWidget extends StatelessWidget {
               title: SizedBox(
                 height: 30,
                 child: Image.asset(
-                  'assets/images/appbartitle4.png',
+                  controler.islightmode
+                      ? 'assets/images/appbartitle4.png'
+                      : 'assets/images/appbartitle4dark.png',
                   colorBlendMode: BlendMode.colorDodge,
                 ),
               ),

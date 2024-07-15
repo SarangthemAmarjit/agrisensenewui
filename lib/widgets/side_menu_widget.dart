@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:fitness_dashboard_ui/constant/constant.dart';
+import 'package:fitness_dashboard_ui/controller/pagecontroller.dart';
 import 'package:fitness_dashboard_ui/controller/tapcontroller.dart';
 import 'package:fitness_dashboard_ui/data/side_menu_data.dart';
 import 'package:flutter/material.dart';
@@ -18,9 +19,9 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
   @override
   Widget build(BuildContext context) {
     final data = SideMenuData();
-    GetxTapController controller = Get.put(GetxTapController());
+    GetxPageControler controller = Get.put(GetxPageControler());
 
-    return GetBuilder<GetxTapController>(builder: (_) {
+    return GetBuilder<GetxPageControler>(builder: (_) {
       return Container(
         padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
         color: controller.islightmode
@@ -57,7 +58,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
   }
 
   Widget buildMenuEntry(
-      SideMenuData data, int index, GetxTapController controller) {
+      SideMenuData data, int index, GetxPageControler controller) {
     controller.isselectedbool(index: index);
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5),

@@ -15,7 +15,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Responsive.isMobile(context) ? WebHomePage() : WebHomePage());
+    return Scaffold(body: WebHomePage());
   }
 }

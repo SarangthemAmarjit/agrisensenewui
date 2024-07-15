@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:fitness_dashboard_ui/controller/pagecontroller.dart';
 import 'package:fitness_dashboard_ui/controller/tapcontroller.dart';
 import 'package:fitness_dashboard_ui/util/responsive.dart';
 import 'package:fitness_dashboard_ui/widgets/header_widget.dart';
@@ -13,7 +14,7 @@ class ThemePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GetxTapController controller = Get.put(GetxTapController());
+    GetxPageControler controller = Get.put(GetxPageControler());
 
     return Scaffold(
       key: _scaffoldKey,
@@ -31,7 +32,9 @@ class ThemePage extends StatelessWidget {
               title: SizedBox(
                 height: 30,
                 child: Image.asset(
-                  'assets/images/appbartitle4.png',
+                  controller.islightmode
+                      ? 'assets/images/appbartitle4.png'
+                      : 'assets/images/appbartitle4dark.png',
                   colorBlendMode: BlendMode.colorDodge,
                 ),
               ),
@@ -48,7 +51,7 @@ class ThemePage extends StatelessWidget {
               ),
             )
           : null,
-      body: GetBuilder<GetxTapController>(builder: (_) {
+      body: GetBuilder<GetxPageControler>(builder: (_) {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18),
           child: Column(

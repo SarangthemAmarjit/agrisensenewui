@@ -45,19 +45,9 @@ class GetxTapController extends GetxController {
   bool _ispumboff = false;
   bool get ispumboff => _ispumboff;
 
-//CHANGE WIDGET BOOL
-  bool _isdashboard = true;
-  bool get isdashboard => _isdashboard;
-  bool _issettiing = false;
-  bool get issettiing => _issettiing;
-  bool _issignout = false;
-  bool get issignout => _issignout;
-
   bool _ismanual = false;
   bool get ismanual => _ismanual;
 
-  bool _islightmode = false;
-  bool get islightmode => _islightmode;
   DateTime? _createddate;
   DateTime? get createddate => _createddate;
 
@@ -84,8 +74,7 @@ class GetxTapController extends GetxController {
 
   int? _timeinterval;
   int? get timeinterval => _timeinterval;
-  bool _isselected = false;
-  bool get isselected => _isselected;
+
   int _dropdownindex = 0;
   int get dropdownindex => _dropdownindex;
   //getter
@@ -105,8 +94,7 @@ class GetxTapController extends GetxController {
   List<DateTime> get alldatetime => _alldatetime;
   List<DateTime> get alldatetimelast10 => _alldatetimelast10;
   var data = <Feed>[].obs;
-  int _selectedIndex = 0;
-  int get selectedIndex => _selectedIndex;
+
   final advancedDrawerController = AdvancedDrawerController();
   @override
   Future<void> onInit() async {
@@ -114,9 +102,9 @@ class GetxTapController extends GetxController {
     Future.delayed(const Duration(seconds: 1))
         .whenComplete(() => FlutterNativeSplash.remove());
     if (_isserverok) {
-      // _startTimer();
-      // getlatestfeeddata();
-      // getalldata();
+      _startTimer();
+      getlatestfeeddata();
+      getalldata();
       getzoompan();
     }
   }
@@ -139,20 +127,6 @@ class GetxTapController extends GetxController {
   }
 //SET THEME
 
-  void setthemecolor({required bool islight}) {
-    _islightmode = islight;
-    update();
-  }
-
-  void resetpageindex() {
-    _isdashboard = true;
-
-    _issettiing = false;
-
-    _issignout = false;
-    update();
-  }
-
   void handleMenuButtonPressed({required bool isopendrawer}) {
     // NOTICE: Manage Advanced Drawer state through the Controller.
     // _advancedDrawerController.value = AdvancedDrawerValue.visible();
@@ -160,43 +134,6 @@ class GetxTapController extends GetxController {
       advancedDrawerController.showDrawer();
     } else {
       advancedDrawerController.hideDrawer();
-    }
-  }
-
-  void isselectedbool({required int index}) {
-    if (_selectedIndex == index) {
-      _isselected = true;
-    } else {
-      _isselected = false;
-    }
-  }
-
-  void changewidget({required int index}) {
-    _selectedIndex = index;
-
-    update();
-
-    switch (index) {
-      case 0:
-        _isdashboard = true;
-        _issettiing = false;
-        _issignout = false;
-        update();
-        break;
-      case 1:
-        _issettiing = true;
-        _isdashboard = true;
-        _issignout = false;
-        update();
-        break;
-      case 2:
-        _issignout = true;
-        _isdashboard = true;
-        _issettiing = false;
-
-        update();
-        break;
-      default:
     }
   }
 

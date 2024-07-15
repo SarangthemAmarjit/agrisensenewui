@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness_dashboard_ui/controller/pagecontroller.dart';
 import 'package:fitness_dashboard_ui/controller/tapcontroller.dart';
 import 'package:fitness_dashboard_ui/util/responsive.dart';
 import 'package:fitness_dashboard_ui/widgets/dashboard_widget.dart';
@@ -14,22 +15,22 @@ class WebHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GetxTapController controller = Get.put(GetxTapController());
+    GetxPageControler controller = Get.put(GetxPageControler());
     final isDesktop = Responsive.isDesktop(context);
 
     return Scaffold(
-      body: GetBuilder<GetxTapController>(builder: (_) {
+      body: GetBuilder<GetxPageControler>(builder: (_) {
         return Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
-            image: controller.islightmode
-                ? DecorationImage(
-                    opacity: 0.2,
-                    image: AssetImage('assets/images/bg.png'),
-                    fit: BoxFit.cover)
-                : null,
-          ),
+          // decoration: BoxDecoration(
+          //   image: controller.islightmode
+          //       ? DecorationImage(
+          //           opacity: 0.2,
+          //           image: AssetImage('assets/images/bg.png'),
+          //           fit: BoxFit.cover)
+          //       : null,
+          // ),
           child: SafeArea(
             child: controller.issettiing || controller.issignout
                 ? Row(

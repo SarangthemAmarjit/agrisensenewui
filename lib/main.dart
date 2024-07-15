@@ -1,4 +1,5 @@
 import 'package:fitness_dashboard_ui/constant/constant.dart';
+import 'package:fitness_dashboard_ui/controller/pagecontroller.dart';
 import 'package:fitness_dashboard_ui/controller/tapcontroller.dart';
 import 'package:fitness_dashboard_ui/router/router.dart';
 
@@ -19,9 +20,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GetxTapController controller = Get.put(GetxTapController());
+    GetxPageControler controller = Get.put(GetxPageControler());
 
-    return GetBuilder<GetxTapController>(builder: (_) {
+    return GetBuilder<GetxPageControler>(builder: (_) {
       return MaterialApp.router(
         routerConfig: _appRouter.config(),
         debugShowCheckedModeBanner: false,

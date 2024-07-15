@@ -1,4 +1,5 @@
 import 'package:fitness_dashboard_ui/constant/constant.dart';
+import 'package:fitness_dashboard_ui/controller/pagecontroller.dart';
 import 'package:fitness_dashboard_ui/controller/tapcontroller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,8 +13,8 @@ class CustomCard extends StatelessWidget {
   const CustomCard({super.key, this.color, this.padding, required this.child});
   @override
   Widget build(BuildContext context) {
-    GetxTapController controller = Get.put(GetxTapController());
-    return GetBuilder<GetxTapController>(builder: (_) {
+    GetxPageControler controller = Get.put(GetxPageControler());
+    return GetBuilder<GetxPageControler>(builder: (_) {
       return Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(
