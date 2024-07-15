@@ -49,6 +49,7 @@ class WebCommonGraphPage extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Container(
+                    color: controller.islightmode ? Colors.white : null,
                     padding: const EdgeInsets.symmetric(horizontal: 6),
                     child: Center(
                         child: SfCartesianChart(

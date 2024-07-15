@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness_dashboard_ui/controller/tapcontroller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class drawerWidget extends StatelessWidget {
   const drawerWidget({
@@ -8,6 +10,8 @@ class drawerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GetxTapController controller = Get.put(GetxTapController());
+
     return Drawer(
       elevation: 0,
       child: Container(
@@ -64,7 +68,9 @@ class drawerWidget extends StatelessWidget {
                 style:
                     TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
               ),
-              onTap: () {},
+              onTap: () {
+                controller.handleMenuButtonPressed(isopendrawer: false);
+              },
             ),
             ListTile(
               leading: const Icon(

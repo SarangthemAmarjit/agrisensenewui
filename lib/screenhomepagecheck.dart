@@ -10,13 +10,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 @RoutePage()
-class ResponsivePage extends StatelessWidget {
-  const ResponsivePage({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body:
-            Responsive.isMobile(context) ? MobileLoginPage() : WebLoginPage());
+        body: Responsive.isMobile(context) ? WebHomePage() : WebHomePage());
   }
 }

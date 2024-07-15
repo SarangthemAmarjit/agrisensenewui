@@ -67,6 +67,9 @@ class RadialIndicatorSoil extends StatelessWidget {
                                             ? '0$value'
                                             : value!,
                                     style: TextStyle(
+                                      color: controller.islightmode
+                                          ? Colors.black
+                                          : Colors.white,
                                       fontWeight: FontWeight.bold,
                                       fontSize: screenWidth < 800
                                           ? screenWidth / 30
@@ -77,7 +80,9 @@ class RadialIndicatorSoil extends StatelessWidget {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10),
                                     ),
-                                    color: Colors.white,
+                                    color: controller.islightmode
+                                        ? Colors.blueGrey
+                                        : Colors.white,
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                         horizontal: 8,
@@ -94,7 +99,9 @@ class RadialIndicatorSoil extends StatelessWidget {
                                                         ? 'Neutral'
                                                         : 'Acidic',
                                             style: TextStyle(
-                                              color: Colors.black,
+                                              color: controller.islightmode
+                                                  ? Colors.white
+                                                  : Colors.black,
                                               fontSize: screenWidth < 800
                                                   ? screenWidth / 30
                                                   : screenWidth / 80,

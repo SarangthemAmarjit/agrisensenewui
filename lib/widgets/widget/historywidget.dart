@@ -20,62 +20,29 @@ class HistoryWidget extends StatelessWidget {
         child: Card(
           elevation: 10,
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(14),
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
+                  color: controller.islightmode ? Colors.white : null,
                   borderRadius: BorderRadius.all(Radius.circular(10))),
-              // color: Colors.white,
               height: screenheight / 1.95,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  FittedBox(
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                            // height: screenheight / 82,
-                            ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 15),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.history,
-                                size: screenwidth / 80,
-                              ),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 8.0),
-                                child: Text(
-                                  "HISTORY",
-                                  style: TextStyle(
-                                      fontSize: screenwidth / 80,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: screenheight / 82,
-                        ),
-                      ],
-                    ),
-                  ),
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      padding:
+                          const EdgeInsets.only(left: 12.0, right: 12, top: 12),
                       child: Container(
                         decoration: BoxDecoration(
                             border: Border.all(
                               width: 2,
-                              color: Colors.white,
+                              color: controller.islightmode
+                                  ? Colors.black
+                                  : Colors.white,
                             ),
                             borderRadius:
-                                const BorderRadius.all(Radius.circular(20))),
+                                const BorderRadius.all(Radius.circular(14))),
                         // height: 40,
                         child: SizedBox(
                           child: Column(
@@ -87,8 +54,11 @@ class HistoryWidget extends StatelessWidget {
                                   ),
                                   Container(
                                     margin: const EdgeInsets.symmetric(
-                                        horizontal: 8),
+                                        horizontal: 4),
                                     decoration: BoxDecoration(
+                                        color: controller.islightmode
+                                            ? Colors.orange[100]
+                                            : Colors.teal[100],
                                         borderRadius:
                                             const BorderRadius.vertical(
                                                 top: Radius.circular(14))),
@@ -102,6 +72,7 @@ class HistoryWidget extends StatelessWidget {
                                         Text(
                                           "Time",
                                           style: TextStyle(
+                                              color: Colors.black,
                                               fontSize: screenwidth / 80,
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -114,6 +85,7 @@ class HistoryWidget extends StatelessWidget {
                                                       ? "pH Level"
                                                       : "",
                                           style: TextStyle(
+                                              color: Colors.black,
                                               fontSize: screenwidth / 80,
                                               fontWeight: FontWeight.bold),
                                         )

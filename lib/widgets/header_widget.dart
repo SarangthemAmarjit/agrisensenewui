@@ -24,29 +24,14 @@ class HeaderWidget extends StatelessWidget {
               ),
             ),
           ),
-        if (Responsive.isMobile(context))
-          Row(
-            children: [
-              IconButton(
-                icon: const Icon(
-                  Icons.search,
-                  color: Colors.grey,
-                  size: 25,
-                ),
-                onPressed: () {},
-              ),
-              InkWell(
-                onTap: () => Scaffold.of(context).openEndDrawer(),
-                child: CircleAvatar(
-                  backgroundColor: Colors.transparent,
-                  child: Image.asset(
-                    "assets/images/avatar.png",
-                    width: 32,
-                  ),
-                ),
-              ),
-            ],
-          ),
+        Image.asset(
+          'assets/images/appbartitle4.png',
+          height: 30,
+          colorBlendMode: BlendMode.colorDodge,
+        ),
+        Container(
+          width: 30,
+        )
       ],
     );
   }

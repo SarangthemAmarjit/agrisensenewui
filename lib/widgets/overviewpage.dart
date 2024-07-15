@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:fitness_dashboard_ui/controller/tapcontroller.dart';
+import 'package:fitness_dashboard_ui/router/router.gr.dart';
 import 'package:fitness_dashboard_ui/util/responsive.dart';
 import 'package:fitness_dashboard_ui/widgets/custom_card_widget.dart';
 import 'package:fitness_dashboard_ui/widgets/widget/cardwidget.dart';
@@ -25,48 +27,61 @@ class ActivityDetailsCard extends StatelessWidget {
           switch (index) {
             case 0:
               return GestureDetector(
-                child: CardWidgetforSoil(
-                  bgimagepath: "assets/images/soilHumidity.png",
-                  title: "Soil Humidity",
-                  iconpath: "assets/images/humidity.png",
-                  index: 0,
-                  value: controller.latestfeeddata?.field3,
-                ),
-                onTap: () {},
-              );
+                  child: CardWidgetforSoil(
+                    bgimagepath: "assets/images/soilHumidity.png",
+                    title: "Soil Humidity",
+                    iconpath: "assets/images/humidity.png",
+                    index: 0,
+                    value: controller.latestfeeddata?.field3,
+                  ),
+                  onTap: Responsive.isMobile(context)
+                      ? () {
+                          context.router.push(CommonGraphPage(index: index));
+                        }
+                      : null);
             case 1:
               return GestureDetector(
-                child: CardWidgetforSoil(
-                  bgimagepath: "assets/images/soilTemperature.png",
-                  title: "Soil Temperature",
-                  iconpath: "assets/images/temp.png",
-                  index: 1,
-                  value: controller.latestfeeddata?.field2,
-                ),
-                onTap: () {},
-              );
+                  child: CardWidgetforSoil(
+                    bgimagepath: "assets/images/soilTemperature.png",
+                    title: "Soil Temperature",
+                    iconpath: "assets/images/temp.png",
+                    index: 1,
+                    value: controller.latestfeeddata?.field2,
+                  ),
+                  onTap: Responsive.isMobile(context)
+                      ? () {
+                          context.router.push(CommonGraphPage(index: index));
+                        }
+                      : null);
             case 2:
               return GestureDetector(
-                child: CardWidgetforSoil(
-                  bgimagepath: "assets/images/soilPhLevel.png",
-                  title: "Soil pH Level",
-                  iconpath: "assets/images/ph.png",
-                  index: 2,
-                  value: controller.latestfeeddata?.field7,
-                ),
-                onTap: () {},
-              );
+                  child: CardWidgetforSoil(
+                    bgimagepath: "assets/images/soilPhLevel.png",
+                    title: "Soil pH Level",
+                    iconpath: "assets/images/ph.png",
+                    index: 2,
+                    value: controller.latestfeeddata?.field7,
+                  ),
+                  onTap: Responsive.isMobile(context)
+                      ? () {
+                          context.router.push(CommonGraphPage(index: index));
+                        }
+                      : null);
             case 3:
               return GestureDetector(
-                child: CardWidgetforSoil(
-                  bgimagepath: "assets/images/soilNPK.png",
-                  title: "Soil NPK",
-                  iconpath: "assets/images/npk.png",
-                  index: 3,
-                  value: controller.latestfeeddata?.field7,
-                ),
-                onTap: () {},
-              );
+                  child: CardWidgetforSoil(
+                    bgimagepath: "assets/images/soilNPK.png",
+                    title: "Soil NPK",
+                    iconpath: "assets/images/npk.png",
+                    index: 3,
+                    value: controller.latestfeeddata?.field7,
+                  ),
+                  onTap: Responsive.isMobile(context)
+                      ? () {
+                          controller.getzoompan();
+                          context.router.push(SoilNpkPage());
+                        }
+                      : null);
             default:
           }
           return null;

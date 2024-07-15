@@ -26,7 +26,10 @@ class LineChartCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    const Text('Graphical View Type: '),
+                    const Text(
+                      'Graphical View Type: ',
+                      style: TextStyle(fontSize: 16),
+                    ),
                     const SizedBox(
                         width:
                             10), // Add some spacing between text and dropdown
@@ -55,7 +58,10 @@ class LineChartCard extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      const Text('Time Interval: '),
+                      const Text(
+                        'Time Interval: ',
+                        style: TextStyle(fontSize: 16),
+                      ),
                       const SizedBox(
                           width:
                               10), // Add some spacing between text and dropdown

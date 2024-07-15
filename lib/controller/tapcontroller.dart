@@ -6,10 +6,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:fitness_dashboard_ui/constant/constant.dart';
 import 'package:fitness_dashboard_ui/model/soilmodel.dart';
+import 'package:fitness_dashboard_ui/util/responsive.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_background_service_android/flutter_background_service_android.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -42,9 +44,20 @@ class GetxTapController extends GetxController {
 
   bool _ispumboff = false;
   bool get ispumboff => _ispumboff;
+
+//CHANGE WIDGET BOOL
+  bool _isdashboard = true;
+  bool get isdashboard => _isdashboard;
+  bool _issettiing = false;
+  bool get issettiing => _issettiing;
+  bool _issignout = false;
+  bool get issignout => _issignout;
+
   bool _ismanual = false;
   bool get ismanual => _ismanual;
 
+  bool _islightmode = false;
+  bool get islightmode => _islightmode;
   DateTime? _createddate;
   DateTime? get createddate => _createddate;
 
@@ -71,28 +84,8 @@ class GetxTapController extends GetxController {
 
   int? _timeinterval;
   int? get timeinterval => _timeinterval;
-
-  void settimeinterval({required String name}) {
-    int ind = timeintervallist.indexOf(name);
-    if (ind == 0) {
-      _timeinterval = 5;
-      update();
-      getalldata();
-    } else if (ind == 1) {
-      _timeinterval = 15;
-
-      update();
-      getalldata();
-    } else {
-      _timeinterval = 30;
-
-      update();
-      getalldata();
-    }
-    _dropdowntime = name;
-    update();
-  }
-
+  bool _isselected = false;
+  bool get isselected => _isselected;
   int _dropdownindex = 0;
   int get dropdownindex => _dropdownindex;
   //getter
@@ -112,6 +105,9 @@ class GetxTapController extends GetxController {
   List<DateTime> get alldatetime => _alldatetime;
   List<DateTime> get alldatetimelast10 => _alldatetimelast10;
   var data = <Feed>[].obs;
+  int _selectedIndex = 0;
+  int get selectedIndex => _selectedIndex;
+  final advancedDrawerController = AdvancedDrawerController();
   @override
   Future<void> onInit() async {
     super.onInit();
@@ -140,6 +136,89 @@ class GetxTapController extends GetxController {
     // Cancel the timer when the widget is disposed
     _scheduletimer!.cancel();
     super.dispose();
+  }
+//SET THEME
+
+  void setthemecolor({required bool islight}) {
+    _islightmode = islight;
+    update();
+  }
+
+  void resetpageindex() {
+    _isdashboard = true;
+
+    _issettiing = false;
+
+    _issignout = false;
+    update();
+  }
+
+  void handleMenuButtonPressed({required bool isopendrawer}) {
+    // NOTICE: Manage Advanced Drawer state through the Controller.
+    // _advancedDrawerController.value = AdvancedDrawerValue.visible();
+    if (isopendrawer) {
+      advancedDrawerController.showDrawer();
+    } else {
+      advancedDrawerController.hideDrawer();
+    }
+  }
+
+  void isselectedbool({required int index}) {
+    if (_selectedIndex == index) {
+      _isselected = true;
+    } else {
+      _isselected = false;
+    }
+  }
+
+  void changewidget({required int index}) {
+    _selectedIndex = index;
+
+    update();
+
+    switch (index) {
+      case 0:
+        _isdashboard = true;
+        _issettiing = false;
+        _issignout = false;
+        update();
+        break;
+      case 1:
+        _issettiing = true;
+        _isdashboard = true;
+        _issignout = false;
+        update();
+        break;
+      case 2:
+        _issignout = true;
+        _isdashboard = true;
+        _issettiing = false;
+
+        update();
+        break;
+      default:
+    }
+  }
+
+  void settimeinterval({required String name}) {
+    int ind = timeintervallist.indexOf(name);
+    if (ind == 0) {
+      _timeinterval = 5;
+      update();
+      getalldata();
+    } else if (ind == 1) {
+      _timeinterval = 15;
+
+      update();
+      getalldata();
+    } else {
+      _timeinterval = 30;
+
+      update();
+      getalldata();
+    }
+    _dropdowntime = name;
+    update();
   }
 
   void setontapnotification() {
@@ -289,24 +368,24 @@ class GetxTapController extends GetxController {
 
   void automationmodeerrordialog({required BuildContext context}) {
     AwesomeDialog(
+      width: Responsive.isMobile(context) ? null : 600,
       context: context,
       dialogType: DialogType.error,
       animType: AnimType.topSlide,
       title: 'ERROR',
       desc: '⚠️⚠️ In Automation Mode You cannot Change Power Mode',
-      showCloseIcon: true,
       btnOkOnPress: () {},
     ).show();
   }
 
   void manualmodeerrordialog({required BuildContext context}) {
     AwesomeDialog(
+      width: Responsive.isMobile(context) ? null : 600,
       context: context,
       dialogType: DialogType.error,
       animType: AnimType.topSlide,
       title: 'ERROR',
       desc: '⚠️⚠️ Set the Pump Mode to Manual First',
-      showCloseIcon: true,
       btnOkOnPress: () {},
     ).show();
   }
@@ -326,12 +405,12 @@ class GetxTapController extends GetxController {
           _progressValue = 0.0;
           update();
           AwesomeDialog(
+            width: Responsive.isMobile(context) ? null : 600,
             context: context,
             dialogType: DialogType.error,
             animType: AnimType.topSlide,
             title: 'ERROR',
             desc: 'Pump Activation Failed⚠️⚠️ Check Wire is connected Properly',
-            showCloseIcon: true,
             btnOkOnPress: () {},
           ).show();
 
@@ -372,25 +451,19 @@ class GetxTapController extends GetxController {
         // setwaterpump(isActive: false);
         setwaterpumpmode(ispoweron: false, iscomingfrompumpmode: false);
         AwesomeDialog(
+          width: Responsive.isMobile(context) ? null : 600,
           context: context,
           dialogType: DialogType.info,
           animType: AnimType.topSlide,
           title: 'Confirm',
           desc:
               'Water Pump Continously on for 10 min. Do you want to pump for another 10 min?',
-          showCloseIcon: true,
-          btnOk: TextButton(
-              onPressed: () {
-                // setwaterpump(isActive: true);
-                setwaterpumpmode(ispoweron: true, iscomingfrompumpmode: false);
-              },
-              child: const Text('YES')),
-          btnCancel: TextButton(
-              onPressed: () {
-                context.router.maybePop();
-              },
-              child: const Text('NO')),
-          btnOkOnPress: () {},
+          btnCancelText: 'NO',
+          btnOkText: 'YES',
+          btnOkOnPress: () {
+            setwaterpumpmode(ispoweron: true, iscomingfrompumpmode: false);
+          },
+          btnCancelOnPress: () {},
         ).show();
       }
     });

@@ -30,11 +30,10 @@ class CardWidgetforSoil extends StatelessWidget {
 
     return GetBuilder<GetxTapController>(builder: (_) {
       return Card(
-        elevation: 5,
-        shadowColor: Colors.black,
+        elevation: 6,
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.black12.withOpacity(.001),
+            color: controller.islightmode ? Colors.white : null,
             borderRadius: BorderRadius.circular(10),
             // image: DecorationImage(
             //   colorFilter: ColorFilter.mode(

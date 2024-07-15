@@ -20,7 +20,7 @@ class PumpWidget extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   // color: Colors.red,
-
+                  color: controller.islightmode ? Colors.white : null,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 padding:
@@ -319,7 +319,7 @@ class PumpWidget extends StatelessWidget {
                                                         context: context,
                                                         ispumboffff: false);
                                                   }
-                                                : controller.field1 == '0'
+                                                : controller.field1.isEmpty
                                                     ? (index) {
                                                         controller
                                                             .automationmodeerrordialog(
