@@ -5,6 +5,7 @@ import 'package:fitness_dashboard_ui/constant/constant.dart';
 import 'package:fitness_dashboard_ui/controller/pagecontroller.dart';
 import 'package:fitness_dashboard_ui/controller/tapcontroller.dart';
 import 'package:fitness_dashboard_ui/data/side_menu_data.dart';
+import 'package:fitness_dashboard_ui/util/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,6 +15,8 @@ class SideMenuWidget extends StatefulWidget {
   @override
   State<SideMenuWidget> createState() => _SideMenuWidgetState();
 }
+
+final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
 class _SideMenuWidgetState extends State<SideMenuWidget> {
   @override
@@ -34,7 +37,9 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
               child: Column(
                 children: [
                   Image.asset(
-                    'assets/images/splash.png',
+                    controller.islightmode
+                        ? 'assets/images/splash.png'
+                        : 'assets/images/splashdark.png',
                     height: 80,
                   ),
                   SizedBox(
@@ -71,7 +76,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
       child: InkWell(
         onTap: () {
           if (index == 2) {
-            context.router.maybePop(false);
+            controller.scaffoldKey.currentState!.closeDrawer();
             showDialog(
               context: context,
               builder: (context) => AlertDialog(

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class GetxPageControler extends GetxController {
@@ -12,7 +13,7 @@ class GetxPageControler extends GetxController {
   bool get isselected => _isselected;
   int _selectedIndex = 0;
   int get selectedIndex => _selectedIndex;
-
+  final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
   bool _islightmode = false;
   bool get islightmode => _islightmode;
 

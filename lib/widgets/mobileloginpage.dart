@@ -46,7 +46,9 @@ class MobileLoginPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Image.asset(
-                        'assets/images/splash.png',
+                        controller.islightmode
+                            ? 'assets/images/splash.png'
+                            : 'assets/images/splashdark.png',
                         height: 100,
                       ),
                       const SizedBox(height: 10),

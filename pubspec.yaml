@@ -32,6 +32,7 @@ dependencies:
   font_awesome_flutter: ^10.7.0
   flutter_advanced_drawer: ^1.3.6
   quickalert: ^1.1.0
+  flutter_launcher_icons: ^0.13.1
 
 
 dev_dependencies:
@@ -41,6 +42,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   build_runner: ^2.4.9
   auto_route_generator: ^8.0.0
+
 
 flutter:
 
