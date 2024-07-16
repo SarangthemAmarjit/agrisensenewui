@@ -18,11 +18,13 @@ class MobileLoginPage extends StatelessWidget {
       return Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/images/bg.png'),
-                opacity: 0.2,
-                fit: BoxFit.cover)),
+        decoration: controller.islightmode
+            ? BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/images/bg.png'),
+                    opacity: 0.2,
+                    fit: BoxFit.cover))
+            : null,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40),
           child: Column(
@@ -33,9 +35,12 @@ class MobileLoginPage extends StatelessWidget {
                 child: Container(
                   height: 450,
                   decoration: BoxDecoration(
-                      color: Colors.white,
+                      // color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.black)),
+                      border: Border.all(
+                          color: controller.islightmode
+                              ? Colors.black
+                              : Colors.white)),
                   padding: const EdgeInsets.all(20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -65,7 +70,9 @@ class MobileLoginPage extends StatelessWidget {
                           context.router.replaceNamed('/homepage');
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
+                          backgroundColor: controller.islightmode
+                              ? Colors.black
+                              : Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -75,7 +82,10 @@ class MobileLoginPage extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(vertical: 15),
                           child: Text(
                             'Submit',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(
+                                color: controller.islightmode
+                                    ? Colors.white
+                                    : Colors.black),
                           ),
                         ),
                       ),

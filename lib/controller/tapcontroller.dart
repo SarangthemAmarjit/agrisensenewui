@@ -102,9 +102,9 @@ class GetxTapController extends GetxController {
     Future.delayed(const Duration(seconds: 1))
         .whenComplete(() => FlutterNativeSplash.remove());
     if (_isserverok) {
-      _startTimer();
-      getlatestfeeddata();
-      getalldata();
+      // _startTimer();
+      // getlatestfeeddata();
+      // getalldata();
       getzoompan();
     }
   }
@@ -126,16 +126,6 @@ class GetxTapController extends GetxController {
     super.dispose();
   }
 //SET THEME
-
-  void handleMenuButtonPressed({required bool isopendrawer}) {
-    // NOTICE: Manage Advanced Drawer state through the Controller.
-    // _advancedDrawerController.value = AdvancedDrawerValue.visible();
-    if (isopendrawer) {
-      advancedDrawerController.showDrawer();
-    } else {
-      advancedDrawerController.hideDrawer();
-    }
-  }
 
   void settimeinterval({required String name}) {
     int ind = timeintervallist.indexOf(name);
@@ -437,7 +427,7 @@ class GetxTapController extends GetxController {
           update();
         }
       } else {
-        setwaterpumpmode(ispoweron: false, iscomingfrompumpmode: false);
+        setwaterpumpmode(ispoweron: false, iscomingfrompumpmode: true);
         // setwaterpump(isActive: false);
         // NotificationService().showNotification(
         //     title: 'Water Pump Deactivated 🚰',

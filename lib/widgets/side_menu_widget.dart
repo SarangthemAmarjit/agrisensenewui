@@ -71,6 +71,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
       child: InkWell(
         onTap: () {
           if (index == 2) {
+            context.router.maybePop(false);
             showDialog(
               context: context,
               builder: (context) => AlertDialog(
