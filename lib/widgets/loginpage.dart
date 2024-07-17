@@ -7,13 +7,22 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 @RoutePage()
-class WebLoginPage extends StatelessWidget {
+class WebLoginPage extends StatefulWidget {
   WebLoginPage({super.key});
+
+  @override
+  State<WebLoginPage> createState() => _WebLoginPageState();
+}
+
+class _WebLoginPageState extends State<WebLoginPage> {
+  final _formKey = GlobalKey<FormState>();
+
   TextEditingController channelIdController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     GetxPageControler controller = Get.put(GetxPageControler());
-    final _formKey = GlobalKey<FormState>();
+    GetxTapController controller2 = Get.put(GetxTapController());
     return Scaffold(
       body: GetBuilder<GetxPageControler>(builder: (_) {
         return Container(
@@ -67,7 +76,7 @@ class WebLoginPage extends StatelessWidget {
                             labelText: 'Enter Your Channel ID',
                             border: OutlineInputBorder(),
                           ),
-                          validator: controller.validateChannelId,
+                          validator: controller2.validateChannelId,
                         ),
                         const SizedBox(height: 20),
                         ElevatedButton(

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -74,16 +76,5 @@ class GetxPageControler extends GetxController {
 
   void closedrawer() {
     scaffoldKey.currentState!.closeDrawer();
-  }
-
-  String? validateChannelId(String? channelId) {
-    const List<String> validChannelIds = ['4252', '6453'];
-
-    if (channelId == null || channelId.isEmpty) {
-      return 'Please enter your Channel ID';
-    } else if (!validChannelIds.contains(channelId)) {
-      return 'Invalid Channel ID. Please enter a valid one.';
-    }
-    return null;
   }
 }

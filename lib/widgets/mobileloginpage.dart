@@ -1,18 +1,24 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fitness_dashboard_ui/controller/pagecontroller.dart';
+import 'package:fitness_dashboard_ui/controller/tapcontroller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 @RoutePage()
-class MobileLoginPage extends StatelessWidget {
+class MobileLoginPage extends StatefulWidget {
   const MobileLoginPage({super.key});
 
   @override
+  State<MobileLoginPage> createState() => _MobileLoginPageState();
+}
+
+class _MobileLoginPageState extends State<MobileLoginPage> {
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController channelIdController = TextEditingController();
+  @override
   Widget build(BuildContext context) {
     GetxPageControler controller = Get.put(GetxPageControler());
-    final _formKey = GlobalKey<FormState>();
-    TextEditingController channelIdController = TextEditingController();
-
+    GetxTapController controller2 = Get.put(GetxTapController());
     return GetBuilder<GetxPageControler>(builder: (_) {
       return Container(
         height: MediaQuery.of(context).size.height,
@@ -59,13 +65,14 @@ class MobileLoginPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
+                          keyboardType: TextInputType.number,
                           controller: channelIdController,
                           decoration: const InputDecoration(
                             labelStyle: TextStyle(color: Colors.grey),
                             labelText: 'Enter Your Channel ID',
                             border: OutlineInputBorder(),
                           ),
-                          validator: controller.validateChannelId,
+                          validator: controller2.validateChannelId,
                         ),
                         const SizedBox(height: 20),
                         ElevatedButton(

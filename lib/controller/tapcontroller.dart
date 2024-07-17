@@ -18,6 +18,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -41,7 +42,8 @@ class GetxTapController extends GetxController {
   bool _pumpStatusmanually = false;
   bool _isserverok = true;
   bool _pumpStatus = false;
-
+  bool _islogin = false;
+  bool get islogin => _islogin;
   bool _ispumboff = false;
   bool get ispumboff => _ispumboff;
 
@@ -50,7 +52,8 @@ class GetxTapController extends GetxController {
 
   DateTime? _createddate;
   DateTime? get createddate => _createddate;
-
+  String _channelid = '';
+  String get channelid => _channelid;
   String _soiltitle = '';
 
   double _progressValue = 0.0;
@@ -99,14 +102,9 @@ class GetxTapController extends GetxController {
   @override
   Future<void> onInit() async {
     super.onInit();
-    Future.delayed(const Duration(seconds: 1))
-        .whenComplete(() => FlutterNativeSplash.remove());
-    if (_isserverok) {
-      // _startTimer();
-      // getlatestfeeddata();
-      // getalldata();
-      getzoompan();
-    }
+    getData();
+    // Future.delayed(const Duration(seconds: 1))
+    //     .whenComplete(() => FlutterNativeSplash.remove());
   }
 
   @override
@@ -126,6 +124,16 @@ class GetxTapController extends GetxController {
     super.dispose();
   }
 //SET THEME
+
+  void handleMenuButtonPressed({required bool isopendrawer}) {
+    // NOTICE: Manage Advanced Drawer state through the Controller.
+    // _advancedDrawerController.value = AdvancedDrawerValue.visible();
+    if (isopendrawer) {
+      advancedDrawerController.showDrawer();
+    } else {
+      advancedDrawerController.hideDrawer();
+    }
+  }
 
   void settimeinterval({required String name}) {
     int ind = timeintervallist.indexOf(name);
@@ -213,9 +221,54 @@ class GetxTapController extends GetxController {
   void _startTimer() {
     // Create a periodic timer that executes the function every 5 seconds
     _scheduletimer = Timer.periodic(const Duration(seconds: 5), (Timer timer) {
-      // getlatestfeeddata();
-      // getalldata();
+      getlatestfeeddata();
+      getalldata();
     });
+  }
+
+  String? validateChannelId(String? channelId) {
+    const List<String> validChannelIds = ['698633', '760525'];
+
+    if (channelId == null || channelId.isEmpty) {
+      return 'Please enter your Channel ID';
+    } else if (!validChannelIds.contains(channelId)) {
+      return 'Invalid Channel ID. Please enter a valid one.';
+    } else {
+      _channelid = channelId;
+      _islogin = true;
+      update();
+      _startTimer();
+      getlatestfeeddata();
+      getalldata();
+      getzoompan();
+      saveData();
+      log('CHANNEL ID : ' + channelId.toString());
+      return null;
+    }
+  }
+
+  Future<void> saveData() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('islogin', true);
+    await prefs.setString('channelid', _channelid);
+  }
+
+  void getData() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.containsKey('islogin')) {
+      _islogin = prefs.getBool('islogin')!;
+      _channelid = prefs.getString('channelid')!;
+      update();
+      log('islogin :' + _islogin.toString());
+      if (_islogin) {
+        if (_isserverok) {
+          _startTimer();
+          getlatestfeeddata();
+          getalldata();
+          getzoompan();
+        }
+      }
+    }
   }
 
   void getsoildetailaccordingtoindex({required int index}) {
@@ -366,13 +419,21 @@ class GetxTapController extends GetxController {
     });
   }
 
-  static const int initialTime = 10 * 60; // 10 minutes in seconds
+  static const int initialTime = 1 * 60; // 10 minutes in seconds
   int _remainingTime = initialTime;
   Timer? _powerontimer;
   void powerontimer({required BuildContext context}) {
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+    log('Power On Timer Starter');
+    _powerontimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (_remainingTime > 0) {
         _remainingTime--;
+      } else if (_remainingTime > 50 && _remainingTime < 55) {
+        if (_field1 == '1') {
+          _remainingTime--;
+        } else {
+          log('Power On Timer off');
+          _powerontimer?.cancel();
+        }
       } else {
         _powerontimer?.cancel();
         // setwaterpump(isActive: false);
@@ -396,6 +457,22 @@ class GetxTapController extends GetxController {
     });
   }
 
+  void _callFunctionforpumpoff() {
+    _ispumboff = false;
+    update();
+
+    // Your function to be called after 5 seconds
+    print('Function called after 5 seconds');
+  }
+
+  void _callFunctionforpoweron() {
+    _pumpStatus = false;
+    update();
+
+    // Your function to be called after 5 seconds
+    print('Function called after 5 seconds');
+  }
+
   void setpump(
       {required bool pumpstatus,
       required bool ispumboffff,
@@ -404,8 +481,12 @@ class GetxTapController extends GetxController {
     _pumpStatus = pumpstatus;
     _ispumboff = ispumboffff;
     update();
+    if (ispumboffff) {
+      Future.delayed(Duration(seconds: 5), _callFunctionforpumpoff);
+    }
 
     if (pumpstatus) {
+      Future.delayed(Duration(seconds: 5), _callFunctionforpoweron);
       setwaterpumpmode(ispoweron: true, iscomingfrompumpmode: false);
       // setwaterpump(isActive: true);
       powerontimer(context: context);
@@ -427,7 +508,7 @@ class GetxTapController extends GetxController {
           update();
         }
       } else {
-        setwaterpumpmode(ispoweron: false, iscomingfrompumpmode: true);
+        setwaterpumpmode(ispoweron: false, iscomingfrompumpmode: false);
         // setwaterpump(isActive: false);
         // NotificationService().showNotification(
         //     title: 'Water Pump Deactivated 🚰',
@@ -445,7 +526,7 @@ class GetxTapController extends GetxController {
         "api_key": "330F3444455D4923",
       };
       final response = await http.get(
-        Uri.http('10.10.1.139:88', '/api/channel-data/698633/latest-feeds',
+        Uri.http('10.10.1.139:88', '/api/channel-data/$_channelid/latest-feeds',
             queryParameters),
       );
 
@@ -518,8 +599,13 @@ class GetxTapController extends GetxController {
 
   void setwaterpumpmode(
       {required bool ispoweron, required bool iscomingfrompumpmode}) async {
+    if (_ismanual) {
+      _pumpStatus = true;
+      update();
+    }
     if (iscomingfrompumpmode) {
       _ismanual = !_ismanual;
+
       update();
     }
     log('ISmanual :' + _ismanual.toString());
@@ -563,7 +649,7 @@ class GetxTapController extends GetxController {
         "interval": _timeinterval == null ? '60' : '$_timeinterval'
       };
       final response = await http.get(
-        Uri.http('10.10.1.139:88', '/api/channel-data/698633/feeds',
+        Uri.http('10.10.1.139:88', '/api/channel-data/$_channelid/feeds',
             queryParameters),
       );
       // var soildata = jsonEncode(response.body);

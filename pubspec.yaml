@@ -33,6 +33,7 @@ dependencies:
   flutter_advanced_drawer: ^1.3.6
   quickalert: ^1.1.0
   flutter_launcher_icons: ^0.13.1
+  shared_preferences: ^2.2.3
 
 
 dev_dependencies:
