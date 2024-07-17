@@ -152,7 +152,7 @@ class PumpWidget extends StatelessWidget {
                             Expanded(
                               child: FittedBox(
                                   child: controller.ispumboff
-                                      ? controller.field1 == '1'
+                                      ? controller.field1 == '1'||controller.field1 == '0'
                                           ? const SizedBox(
                                               height: 30,
                                               child: Padding(

@@ -599,13 +599,16 @@ class GetxTapController extends GetxController {
 
   void setwaterpumpmode(
       {required bool ispoweron, required bool iscomingfrompumpmode}) async {
-    if (_ismanual) {
-      _pumpStatus = true;
-      update();
-    }
     if (iscomingfrompumpmode) {
       _ismanual = !_ismanual;
 
+      update();
+    }
+    if (_ismanual) {
+      _ispumboff = true;
+      update();
+    } else {
+      _pumpStatus = true;
       update();
     }
     log('ISmanual :' + _ismanual.toString());
