@@ -10,14 +10,13 @@ import 'package:get/get.dart';
 
 class ThemePage extends StatelessWidget {
   ThemePage({super.key});
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     GetxPageControler controller = Get.put(GetxPageControler());
 
     return Scaffold(
-      key: _scaffoldKey,
+      key: controller.scaffoldKey,
       drawer: Responsive.isMobile(context) || Responsive.isTablet(context)
           ? SizedBox(
               width: 252,
@@ -41,7 +40,7 @@ class ThemePage extends StatelessWidget {
               leading: IconButton(
                 onPressed: () {
                   log('Open Drwawer');
-                  _scaffoldKey.currentState!.openDrawer();
+                  controller.opendrawer();
                 },
                 icon: Icon(
                   Icons.menu,

@@ -48,13 +48,13 @@ class GetxPageControler extends GetxController {
         break;
       case 1:
         _issettiing = true;
-        _isdashboard = true;
+        _isdashboard = false;
         _issignout = false;
         update();
         break;
       case 2:
         _issignout = true;
-        _isdashboard = true;
+        _isdashboard = false;
         _issettiing = false;
 
         update();
@@ -66,5 +66,24 @@ class GetxPageControler extends GetxController {
   void setthemecolor({required bool islight}) {
     _islightmode = islight;
     update();
+  }
+
+  void opendrawer() {
+    scaffoldKey.currentState!.openDrawer();
+  }
+
+  void closedrawer() {
+    scaffoldKey.currentState!.closeDrawer();
+  }
+
+  String? validateChannelId(String? channelId) {
+    const List<String> validChannelIds = ['4252', '6453'];
+
+    if (channelId == null || channelId.isEmpty) {
+      return 'Please enter your Channel ID';
+    } else if (!validChannelIds.contains(channelId)) {
+      return 'Invalid Channel ID. Please enter a valid one.';
+    }
+    return null;
   }
 }

@@ -42,7 +42,7 @@ class DashboardWidget extends StatelessWidget {
               leading: IconButton(
                 onPressed: () {
                   log('Open Drwawer');
-                  controler.scaffoldKey.currentState!.openDrawer();
+                  controler.opendrawer();
                 },
                 icon: Icon(
                   Icons.menu,

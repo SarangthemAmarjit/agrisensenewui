@@ -16,8 +16,6 @@ class SideMenuWidget extends StatefulWidget {
   State<SideMenuWidget> createState() => _SideMenuWidgetState();
 }
 
-final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
 class _SideMenuWidgetState extends State<SideMenuWidget> {
   @override
   Widget build(BuildContext context) {
@@ -76,7 +74,8 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
       child: InkWell(
         onTap: () {
           if (index == 2) {
-            controller.scaffoldKey.currentState!.closeDrawer();
+            log('Close Drwawer');
+            controller.closedrawer();
             showDialog(
               context: context,
               builder: (context) => AlertDialog(
@@ -97,6 +96,8 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
               ),
             );
           } else {
+            log('Close Drwawer');
+            controller.closedrawer();
             controller.changewidget(index: index);
           }
         },

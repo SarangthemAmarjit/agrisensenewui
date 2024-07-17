@@ -98,7 +98,7 @@ abstract class $AppRouter extends _i12.RootStackRouter {
     WebLoginPage.name: (routeData) {
       return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i10.WebLoginPage(),
+        child: _i10.WebLoginPage(),
       );
     },
     WebSoilNpkPage.name: (routeData) {
