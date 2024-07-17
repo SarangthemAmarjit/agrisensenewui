@@ -1,7 +1,8 @@
 import 'dart:developer';
-
+import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class GetxPageControler extends GetxController {
   //CHANGE WIDGET BOOL
@@ -76,5 +77,56 @@ class GetxPageControler extends GetxController {
 
   void closedrawer() {
     scaffoldKey.currentState!.closeDrawer();
+  }
+
+  void showLoadingDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return Center(
+          child: LoadingAnimationWidget.staggeredDotsWave(
+            color: Colors.white,
+            size: 50,
+          ),
+        );
+      },
+    );
+  }
+
+  Future? _showLoadingDialog(BuildContext context) {
+    showDialog(
+      useSafeArea: true,
+      context: context,
+      barrierDismissible: false, // Prevents dialog from being dismissed
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Lottie.asset(
+                  'assets/images/loading3.json',
+                  height: 100,
+                ),
+                const Text(
+                  'Please wait...',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+    return null;
   }
 }
