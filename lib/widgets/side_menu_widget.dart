@@ -7,6 +7,7 @@ import 'package:fitness_dashboard_ui/controller/tapcontroller.dart';
 import 'package:fitness_dashboard_ui/data/side_menu_data.dart';
 import 'package:fitness_dashboard_ui/util/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class SideMenuWidget extends StatefulWidget {
@@ -34,10 +35,10 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
               flex: 2,
               child: Column(
                 children: [
-                  Image.asset(
+                  SvgPicture.asset(
                     controller.islightmode
-                        ? 'assets/images/splash.png'
-                        : 'assets/images/splashdark.png',
+                        ? 'assets/images/splash.svg'
+                        : 'assets/images/splashdark.svg',
                     height: 80,
                   ),
                   SizedBox(

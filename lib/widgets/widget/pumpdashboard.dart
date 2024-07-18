@@ -1,5 +1,7 @@
 import 'package:fitness_dashboard_ui/controller/pagecontroller.dart';
 import 'package:fitness_dashboard_ui/controller/tapcontroller.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -45,8 +47,8 @@ class PumpWidget extends StatelessWidget {
                                     padding: const EdgeInsets.only(right: 80),
                                     child: Row(
                                       children: [
-                                        Image.asset(
-                                          "assets/images/mode.png",
+                                        SvgPicture.asset(
+                                          "assets/images/mode.svg",
                                           height: 35,
                                         ),
                                         const SizedBox(
@@ -114,8 +116,8 @@ class PumpWidget extends StatelessWidget {
                                           ? controller.field8.isEmpty ||
                                                   controller.field8 == '0' ||
                                                   controller.field8 == '2'
-                                              ? Image.asset(
-                                                  "assets/images/pumpOFF.png",
+                                              ? SvgPicture.asset(
+                                                  "assets/images/pumpOFF.svg",
                                                   height: 60,
                                                 )
                                               : Image.asset(
@@ -127,8 +129,8 @@ class PumpWidget extends StatelessWidget {
                                                   "assets/images/pumpONgif.gif",
                                                   height: 60,
                                                 )
-                                              : Image.asset(
-                                                  "assets/images/pumpOFF.png",
+                                              : SvgPicture.asset(
+                                                  "assets/images/pumpOFF.svg",
                                                   height: 60,
                                                 ),
 
@@ -152,7 +154,8 @@ class PumpWidget extends StatelessWidget {
                             Expanded(
                               child: FittedBox(
                                   child: controller.ispumboff
-                                      ? controller.field1 == '1'||controller.field1 == '0'
+                                      ? controller.field1 == '1' ||
+                                              controller.field1 == '0'
                                           ? const SizedBox(
                                               height: 30,
                                               child: Padding(
@@ -216,7 +219,6 @@ class PumpWidget extends StatelessWidget {
                                                     })
                                       : controller.pumpStatus
                                           ? controller.field1.isEmpty ||
-                                                  controller.field1 == '0' ||
                                                   controller.field1 == '2'
                                               ? const SizedBox(
                                                   height: 30,
@@ -263,8 +265,7 @@ class PumpWidget extends StatelessWidget {
                                                           ? 0
                                                           : 1
                                                       : controller.field1 == '2' ||
-                                                              controller.field1
-                                                                  .isEmpty
+                                                              controller.field1.isEmpty
                                                           ? 0
                                                           : 1,
                                                   totalSwitches: 2,
@@ -316,26 +317,34 @@ class PumpWidget extends StatelessWidget {
                                               labels: const ['OFF', 'ON'],
                                               radiusStyle: true,
                                               //FIRST TOGGLE PART
-                                              onToggle: controller.field1 == '2' || controller.field1 == '1'
+                                              onToggle: controller.field1 == '2'
                                                   ? (index) {
                                                       controller.setpump(
                                                           pumpstatus: true,
                                                           context: context,
                                                           ispumboffff: false);
                                                     }
-                                                  : controller.field1 == '0'
+                                                  : controller.field1 == '1'
                                                       ? (index) {
-                                                          controller
-                                                              .automationmodeerrordialog(
-                                                                  context:
-                                                                      context);
+                                                          controller.setpump(
+                                                              pumpstatus: false,
+                                                              context: context,
+                                                              ispumboffff:
+                                                                  true);
                                                         }
-                                                      : (index) {
-                                                          controller
-                                                              .manualmodeerrordialog(
-                                                                  context:
-                                                                      context);
-                                                        })),
+                                                      : controller.field1 == '0'
+                                                          ? (index) {
+                                                              controller
+                                                                  .automationmodeerrordialog(
+                                                                      context:
+                                                                          context);
+                                                            }
+                                                          : (index) {
+                                                              controller
+                                                                  .manualmodeerrordialog(
+                                                                      context:
+                                                                          context);
+                                                            })),
                             ),
                           ],
                         ),

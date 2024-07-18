@@ -419,15 +419,15 @@ class GetxTapController extends GetxController {
     });
   }
 
-  static const int initialTime = 1 * 60; // 10 minutes in seconds
-  int _remainingTime = initialTime;
   Timer? _powerontimer;
   void powerontimer({required BuildContext context}) {
+    const int initialTime = 1 * 60; // 10 minutes in seconds
+    int _remainingTime = initialTime;
     log('Power On Timer Starter');
     _powerontimer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (_remainingTime > 0) {
+      if (_remainingTime >= 55) {
         _remainingTime--;
-      } else if (_remainingTime > 50 && _remainingTime < 55) {
+      } else if (_remainingTime < 55) {
         if (_field1 == '1') {
           _remainingTime--;
         } else {
@@ -450,6 +450,7 @@ class GetxTapController extends GetxController {
           btnOkText: 'YES',
           btnOkOnPress: () {
             setwaterpumpmode(ispoweron: true, iscomingfrompumpmode: false);
+            powerontimer(context: context);
           },
           btnCancelOnPress: () {},
         ).show();
@@ -604,14 +605,18 @@ class GetxTapController extends GetxController {
 
       update();
     }
-    if (_ismanual) {
-      _ispumboff = true;
-      update();
-    } else {
-      _pumpStatus = true;
-      update();
-    }
+    // if (_ismanual) {
+    //   if (!ispoweron) {
+    //     _ispumboff = true;
+    //     update();
+    //   }
+    // } else {
+    //   _pumpStatus = true;
+    //   update();
+    // }
     log('ISmanual :' + _ismanual.toString());
+    log('PUMP STATUS :' + _pumpStatus.toString());
+
     log('Field 2 ${_latestfeeddata!.field2}');
     try {
       final queryParameters = {
@@ -635,6 +640,7 @@ class GetxTapController extends GetxController {
       );
       if (response.statusCode == 200) {
         log('Successfuly Set Mode');
+        getlatestfeeddata();
       } else {
         log('error water mode set');
       }

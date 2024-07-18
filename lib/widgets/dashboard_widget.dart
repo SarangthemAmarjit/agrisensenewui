@@ -61,7 +61,7 @@ class DashboardWidget extends StatelessWidget {
 
               const ActivityDetailsCard(),
               const SizedBox(height: 18),
-              Responsive.isDesktop(context) || (Responsive.isDesktop(context))
+              Responsive.isDesktop(context) || (Responsive.isTablet(context))
                   ? const LineChartCard()
                   : PumpWidget(),
 
