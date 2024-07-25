@@ -52,7 +52,7 @@ class RadialIndicatorSoil extends StatelessWidget {
                     enableLoadingAnimation: true,
                     axes: <RadialAxis>[
                       RadialAxis(
-                        maximum: 14,
+                        maximum: 9,
 
                         annotations: [
                           GaugeAnnotation(
@@ -102,7 +102,7 @@ class RadialIndicatorSoil extends StatelessWidget {
                                                   : double.parse(value!) > 7.5
                                                       ? 'Alkaline'
                                                       : double.parse(value!) >
-                                                              6.5
+                                                              6.0
                                                           ? 'Neutral'
                                                           : 'Acidic',
                                               style: TextStyle(
@@ -124,7 +124,7 @@ class RadialIndicatorSoil extends StatelessWidget {
                               ))
                         ],
                         ticksPosition: ElementsPosition.inside,
-                        minimum: 0,
+                        minimum: 3,
 
                         showLabels: true, // Show labels on the axis
                         labelOffset: 10, // Offset to adjust label position
@@ -141,8 +141,8 @@ class RadialIndicatorSoil extends StatelessWidget {
                                 fontFamily: 'KulimPark',
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold),
-                            startValue: 0,
-                            endValue: 6.5,
+                            startValue: 3,
+                            endValue: 6.0,
                           ),
                           GaugeRange(
                             color: Colors.yellow.withOpacity(0.9),
@@ -151,7 +151,7 @@ class RadialIndicatorSoil extends StatelessWidget {
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold),
                             label: 'Neutral',
-                            startValue: 6.5,
+                            startValue: 6.0,
                             endValue: 7.5,
                           ),
                           GaugeRange(
@@ -167,7 +167,7 @@ class RadialIndicatorSoil extends StatelessWidget {
                                 fontWeight: FontWeight.bold),
                             label: 'Alkaline',
                             startValue: 7.5,
-                            endValue: 14,
+                            endValue: 9.0,
                           )
                         ],
                         useRangeColorForAxis: true,

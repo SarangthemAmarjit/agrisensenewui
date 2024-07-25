@@ -69,7 +69,7 @@ class HumiditynTemp extends StatelessWidget {
                     enableLoadingAnimation: true,
                     axes: <RadialAxis>[
                       RadialAxis(
-                        maximum: 100,
+                        maximum: index == 0 ? 100 : 25.5,
 
                         annotations: [
                           GaugeAnnotation(
@@ -122,11 +122,10 @@ class HumiditynTemp extends StatelessWidget {
                                                                 33.33
                                                             ? 'Optimal'
                                                             : 'Dry'
-                                                    : double.parse(value!) >
-                                                            66.66
+                                                    : double.parse(value!) > 18
                                                         ? 'High'
                                                         : double.parse(value!) >
-                                                                33.33
+                                                                8
                                                             ? 'Optimal'
                                                             : 'Low',
                                             style: TextStyle(
@@ -185,18 +184,29 @@ class HumiditynTemp extends StatelessWidget {
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold),
                                   startValue: 0,
-                                  endValue: 33.33,
+                                  endValue: 8.0,
                                 ),
-                          GaugeRange(
-                            color: Colors.green.withOpacity(0.9),
-                            labelStyle: const GaugeTextStyle(
-                                fontFamily: 'KulimPark',
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                            label: 'Optimal',
-                            startValue: 33.33,
-                            endValue: 66.66,
-                          ),
+                          index == 0
+                              ? GaugeRange(
+                                  color: Colors.green.withOpacity(0.9),
+                                  labelStyle: const GaugeTextStyle(
+                                      fontFamily: 'KulimPark',
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                  label: 'Optimal',
+                                  startValue: 33.33,
+                                  endValue: 66.66,
+                                )
+                              : GaugeRange(
+                                  color: Colors.green.withOpacity(0.9),
+                                  labelStyle: const GaugeTextStyle(
+                                      fontFamily: 'KulimPark',
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                  label: 'Optimal',
+                                  startValue: 8,
+                                  endValue: 18,
+                                ),
                           index == 0
                               ? GaugeRange(
                                   gradient: SweepGradient(
@@ -225,8 +235,8 @@ class HumiditynTemp extends StatelessWidget {
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold),
                                   label: 'High',
-                                  startValue: 66.66,
-                                  endValue: 100,
+                                  startValue: 18,
+                                  endValue: 25.5,
                                 ),
                         ],
                         useRangeColorForAxis: true,

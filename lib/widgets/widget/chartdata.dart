@@ -103,6 +103,7 @@ class RadialData extends StatelessWidget {
             series: <CircularSeries>[
               // Renders radial bar chart
               RadialBarSeries<ChartData, String?>(
+                maximumValue: 255,
                 enableTooltip: true,
                 radius: '115%',
                 trackOpacity: 0.2,
