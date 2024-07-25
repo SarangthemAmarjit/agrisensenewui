@@ -5,7 +5,7 @@ import 'package:fitness_dashboard_ui/controller/pagecontroller.dart';
 import 'package:fitness_dashboard_ui/controller/tapcontroller.dart';
 import 'package:fitness_dashboard_ui/util/responsive.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:get/get.dart';
 
 import 'package:syncfusion_flutter_gauges/gauges.dart';
@@ -42,8 +42,8 @@ class RadialIndicatorSoil extends StatelessWidget {
                       ),
                       Opacity(
                         opacity: 0.3,
-                        child: SvgPicture.asset(
-                          'assets/images/Soil Temperature Sensor.svg',
+                        child: Image.asset(
+                          'assets/images/Soil Temperature Sensor.png',
                         ),
                       ),
                     ],

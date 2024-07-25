@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:fitness_dashboard_ui/controller/tapcontroller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:get/get.dart';
 
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -77,8 +77,8 @@ class RadialData extends StatelessWidget {
               ),
               Opacity(
                 opacity: 0.3,
-                child: SvgPicture.asset(
-                  'assets/images/Soil NPK Sensor.svg',
+                child: Image.asset(
+                  'assets/images/Soil NPK Sensor.png',
                 ),
               ),
             ],

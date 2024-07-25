@@ -4,7 +4,7 @@ import 'package:fitness_dashboard_ui/util/responsive.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:get/get.dart';
 
 import 'package:syncfusion_flutter_gauges/gauges.dart';
@@ -41,8 +41,8 @@ class HumiditynTemp extends StatelessWidget {
                           ),
                           Opacity(
                             opacity: 0.3,
-                            child: SvgPicture.asset(
-                              'assets/images/Soil Moisture Sensor.svg',
+                            child: Image.asset(
+                              'assets/images/Soil Moisture Sensor.png',
                             ),
                           ),
                         ],
@@ -59,8 +59,8 @@ class HumiditynTemp extends StatelessWidget {
                           ),
                           Opacity(
                             opacity: 0.3,
-                            child: SvgPicture.asset(
-                              'assets/images/Soil Temperature Sensor.svg',
+                            child: Image.asset(
+                              'assets/images/Soil Temperature Sensor.png',
                             ),
                           ),
                         ],

@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fitness_dashboard_ui/controller/pagecontroller.dart';
 import 'package:fitness_dashboard_ui/controller/tapcontroller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+
 import 'package:get/get.dart';
 
 @RoutePage()
@@ -52,10 +52,10 @@ class _MobileLoginPageState extends State<MobileLoginPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        SvgPicture.asset(
+                        Image.asset(
                           controller.islightmode
-                              ? 'assets/images/splash.svg'
-                              : 'assets/images/splashdark.svg',
+                              ? 'assets/images/splash.png'
+                              : 'assets/images/splashdark.png',
                           height: 100,
                         ),
                         const SizedBox(height: 10),

@@ -4,7 +4,7 @@ import 'package:fitness_dashboard_ui/controller/tapcontroller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
+
 import 'package:get/get.dart';
 
 @RoutePage()
@@ -57,10 +57,10 @@ class _WebLoginPageState extends State<WebLoginPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        SvgPicture.asset(
+                        Image.asset(
                           controller.islightmode
-                              ? 'assets/images/splash.svg'
-                              : 'assets/images/splashdark.svg',
+                              ? 'assets/images/splash.png'
+                              : 'assets/images/splashdark.png',
                           height: 100,
                         ),
                         const SizedBox(height: 10),

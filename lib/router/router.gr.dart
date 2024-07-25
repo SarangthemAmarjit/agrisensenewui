@@ -12,8 +12,7 @@ import 'package:auto_route/auto_route.dart' as _i12;
 import 'package:fitness_dashboard_ui/screencheck.dart' as _i5;
 import 'package:fitness_dashboard_ui/screenhomepagecheck.dart' as _i3;
 import 'package:fitness_dashboard_ui/screens/main_screen.dart' as _i9;
-import 'package:fitness_dashboard_ui/screens/mobile/pages/contactUs.page.dart'
-    as _i2;
+
 import 'package:fitness_dashboard_ui/screens/mobile/pages/moisture.page.dart'
     as _i1;
 import 'package:fitness_dashboard_ui/screens/mobile/pages/servererrorpage.dart'
@@ -39,12 +38,6 @@ abstract class $AppRouter extends _i12.RootStackRouter {
           key: args.key,
           index: args.index,
         ),
-      );
-    },
-    ContactPage.name: (routeData) {
-      return _i12.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i2.ContactPage(),
       );
     },
     HomePage.name: (routeData) {

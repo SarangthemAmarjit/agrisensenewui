@@ -1,7 +1,6 @@
 import 'package:fitness_dashboard_ui/controller/pagecontroller.dart';
 import 'package:fitness_dashboard_ui/controller/tapcontroller.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/svg.dart';
+
 import 'package:toggle_switch/toggle_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -47,8 +46,8 @@ class PumpWidget extends StatelessWidget {
                                     padding: const EdgeInsets.only(right: 80),
                                     child: Row(
                                       children: [
-                                        SvgPicture.asset(
-                                          "assets/images/mode.svg",
+                                        Image.asset(
+                                          "assets/images/mode.png",
                                           height: 35,
                                         ),
                                         const SizedBox(
@@ -116,8 +115,8 @@ class PumpWidget extends StatelessWidget {
                                           ? controller.field8.isEmpty ||
                                                   controller.field8 == '0' ||
                                                   controller.field8 == '2'
-                                              ? SvgPicture.asset(
-                                                  "assets/images/pumpOFF.svg",
+                                              ? Image.asset(
+                                                  "assets/images/pumpOFF.png",
                                                   height: 60,
                                                 )
                                               : Image.asset(
@@ -129,8 +128,8 @@ class PumpWidget extends StatelessWidget {
                                                   "assets/images/pumpONgif.gif",
                                                   height: 60,
                                                 )
-                                              : SvgPicture.asset(
-                                                  "assets/images/pumpOFF.svg",
+                                              : Image.asset(
+                                                  "assets/images/pumpOFF.png",
                                                   height: 60,
                                                 ),
 
