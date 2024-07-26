@@ -6,6 +6,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:fitness_dashboard_ui/constant/constant.dart';
 import 'package:fitness_dashboard_ui/model/soilmodel.dart';
+import 'package:fitness_dashboard_ui/services/localnotification.dart';
 import 'package:fitness_dashboard_ui/util/responsive.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,16 @@ class GetxTapController extends GetxController {
   int pumptimer = 0;
   int _min = 0;
   int _sec = 0;
+  // THRESHOLD VALUE
+  bool _isEditingThreshold = false;
+  bool get isEditingThreshold => _isEditingThreshold;
+  int _thresholdvalue = 50;
+  final TextEditingController thresholdController = TextEditingController();
+
+  int? _savethresholdvalue;
+  int? get savethresholdvalue => _savethresholdvalue;
+
+  int get threshold => _thresholdvalue;
 
   bool _ismanualwaterconfirm = false;
   bool _istabonnotification = true;
@@ -102,9 +113,10 @@ class GetxTapController extends GetxController {
   @override
   Future<void> onInit() async {
     super.onInit();
+    thresholdController.text = threshold.toString();
     getData();
-    // Future.delayed(const Duration(seconds: 1))
-    //     .whenComplete(() => FlutterNativeSplash.remove());
+    Future.delayed(const Duration(seconds: 1))
+        .whenComplete(() => FlutterNativeSplash.remove());
   }
 
   @override
@@ -133,6 +145,12 @@ class GetxTapController extends GetxController {
     } else {
       advancedDrawerController.hideDrawer();
     }
+  }
+
+  void clearlogindata() {
+    _islogin = false;
+    _channelid = '';
+    update();
   }
 
   void settimeinterval({required String name}) {
@@ -172,6 +190,28 @@ class GetxTapController extends GetxController {
     );
   }
 
+  void setEditbutton() {
+    _isEditingThreshold = true;
+    update();
+  }
+
+  void getthreshold() async {
+    final prefs = await SharedPreferences.getInstance();
+    _savethresholdvalue = prefs.getInt('threshold');
+    _thresholdvalue = _savethresholdvalue!;
+    update();
+  }
+
+  void setthresholdvalue({required int value}) async {
+    final prefs = await SharedPreferences.getInstance();
+
+    _isEditingThreshold = false;
+    _thresholdvalue = value;
+    update();
+    prefs.setInt('threshold', value);
+    getthreshold();
+  }
+
   void automatictoggle() {}
 
   void monitorbackgroundservice(ServiceInstance service) {
@@ -184,15 +224,18 @@ class GetxTapController extends GetxController {
             if (latestfeeddata!.field3.isEmpty) {
               log('empty value');
             } else {
-              if (int.parse(latestfeeddata!.field3) < 50) {
+              int? value = _savethresholdvalue == null
+                  ? _thresholdvalue
+                  : _savethresholdvalue;
+              if (int.parse(latestfeeddata!.field3) < value!) {
                 service.setForegroundNotificationInfo(
                     title: 'ALERT ⚠️ ⚠️ ', content: 'Low Soil Moisture Level');
                 log('istab checking ${_istabonnotification.toString()} ');
                 if (_istabonnotification) {
                   log('istab is  false');
-                  // NotificationService().showalarmwarning(
-                  //     title: '⚠️Critical Soil Moisture Level⚠️ ',
-                  //     body: 'Tap Here Soon to Pump the Water');
+                  NotificationService().showalarmwarning(
+                      title: '⚠️Critical Soil Moisture Level⚠️ ',
+                      body: 'Tap Here Soon to Pump the Water');
 
                   _istabonnotification = false;
                   update();
@@ -255,6 +298,9 @@ class GetxTapController extends GetxController {
 
   void getData() async {
     final prefs = await SharedPreferences.getInstance();
+    if (prefs.containsKey('threshold')) {
+      getthreshold();
+    }
     if (prefs.containsKey('islogin')) {
       _islogin = prefs.getBool('islogin')!;
       _channelid = prefs.getString('channelid')!;
@@ -268,6 +314,10 @@ class GetxTapController extends GetxController {
           getzoompan();
         }
       }
+    } else {
+      _islogin = false;
+      _channelid = '';
+      update();
     }
   }
 

@@ -8,8 +8,21 @@ import 'package:fitness_dashboard_ui/util/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+
+// import 'package:soilmoisturedetector/services/backgroundservoces.dart';
+
+// import 'package:soilmoisturedetector/services/workmanager.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // await NotificationService().initNotification();
+  // await initializeService();
+  FlutterNativeSplash.preserve(
+      widgetsBinding: WidgetsFlutterBinding.ensureInitialized());
   runApp(const MyApp());
 }
 

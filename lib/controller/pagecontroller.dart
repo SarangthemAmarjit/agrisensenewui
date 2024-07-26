@@ -1,8 +1,10 @@
 import 'dart:developer';
+import 'package:fitness_dashboard_ui/controller/tapcontroller.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class GetxPageControler extends GetxController {
   //CHANGE WIDGET BOOL
@@ -26,6 +28,15 @@ class GetxPageControler extends GetxController {
     _issettiing = false;
 
     _issignout = false;
+    update();
+  }
+
+  void signout() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    prefs.remove('islogin');
+    prefs.remove('channelid');
+
     update();
   }
 

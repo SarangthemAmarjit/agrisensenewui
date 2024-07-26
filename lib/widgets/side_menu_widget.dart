@@ -85,6 +85,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                 actions: [
                   ElevatedButton(
                     onPressed: () {
+                      controller.signout();
                       context.router.replaceNamed('/');
                     },
                     child: const Text('Yes'),
