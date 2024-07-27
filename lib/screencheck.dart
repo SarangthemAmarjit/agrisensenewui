@@ -14,8 +14,6 @@ class ResponsivePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body:
-            Responsive.isMobile(context) ? MobileLoginPage() : WebLoginPage());
+    return Responsive.isMobile(context) ? MobileLoginPage() : WebLoginPage();
   }
 }

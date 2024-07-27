@@ -15,6 +15,5 @@ class AppRouter extends $AppRouter {
         AutoRoute(path: '/npkPage', page: SoilNpkPage.page),
 
         AutoRoute(path: '/webhomepage', page: WebHomePage.page),
-        AutoRoute(path: '/homepage', page: HomePage.page),
       ];
 }

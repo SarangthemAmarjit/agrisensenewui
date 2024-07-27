@@ -79,9 +79,8 @@ class _MobileLoginPageState extends State<MobileLoginPage> {
                         ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              controller.showLoadingDialog(context);
                               controller.resetpageindex();
-                              context.router.replaceNamed('/homepage');
+                              context.router.replaceNamed('/');
                             }
                           },
                           style: ElevatedButton.styleFrom(

@@ -148,6 +148,7 @@ class GetxTapController extends GetxController {
   }
 
   void clearlogindata() {
+    _scheduletimer!.cancel();
     _islogin = false;
     _channelid = '';
     update();
@@ -298,9 +299,9 @@ class GetxTapController extends GetxController {
 
   void getData() async {
     final prefs = await SharedPreferences.getInstance();
-    if (prefs.containsKey('threshold')) {
-      getthreshold();
-    }
+    // if (prefs.containsKey('threshold')) {
+    //   getthreshold();
+    // }
     if (prefs.containsKey('islogin')) {
       _islogin = prefs.getBool('islogin')!;
       _channelid = prefs.getString('channelid')!;
@@ -314,10 +315,6 @@ class GetxTapController extends GetxController {
           getzoompan();
         }
       }
-    } else {
-      _islogin = false;
-      _channelid = '';
-      update();
     }
   }
 
@@ -572,6 +569,7 @@ class GetxTapController extends GetxController {
     if (latestdata == null) {
       isDataLoading(true);
     }
+
     try {
       final queryParameters = {
         "api_key": "330F3444455D4923",

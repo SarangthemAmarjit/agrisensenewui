@@ -32,8 +32,9 @@ class GetxPageControler extends GetxController {
   }
 
   void signout() async {
+    GetxTapController controllertab = Get.put(GetxTapController());
     final prefs = await SharedPreferences.getInstance();
-
+    controllertab.clearlogindata();
     prefs.remove('islogin');
     prefs.remove('channelid');
 

@@ -84,7 +84,7 @@ class _WebLoginPageState extends State<WebLoginPage> {
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               controller.resetpageindex();
-                              context.router.replaceNamed('/homepage');
+                              context.router.replaceNamed('/');
                             }
                           },
                           style: ElevatedButton.styleFrom(

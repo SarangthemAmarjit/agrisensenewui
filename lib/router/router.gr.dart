@@ -8,38 +8,37 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i12;
+import 'package:auto_route/auto_route.dart' as _i11;
 import 'package:fitness_dashboard_ui/authcheck.dart' as _i1;
-import 'package:fitness_dashboard_ui/screencheck.dart' as _i5;
-import 'package:fitness_dashboard_ui/screenhomepagecheck.dart' as _i3;
-import 'package:fitness_dashboard_ui/screens/main_screen.dart' as _i9;
+import 'package:fitness_dashboard_ui/screencheck.dart' as _i4;
+import 'package:fitness_dashboard_ui/screens/main_screen.dart' as _i8;
 import 'package:fitness_dashboard_ui/screens/mobile/pages/moisture.page.dart'
     as _i2;
 import 'package:fitness_dashboard_ui/screens/mobile/pages/servererrorpage.dart'
-    as _i6;
+    as _i5;
 import 'package:fitness_dashboard_ui/screens/mobile/pages/soilNPK.page.dart'
-    as _i7;
-import 'package:fitness_dashboard_ui/widgets/loginpage.dart' as _i10;
-import 'package:fitness_dashboard_ui/widgets/mobileloginpage.dart' as _i4;
-import 'package:fitness_dashboard_ui/widgets/moisture.page.dart' as _i8;
-import 'package:fitness_dashboard_ui/widgets/soilNPK.page.dart' as _i11;
-import 'package:flutter/cupertino.dart' as _i14;
-import 'package:flutter/material.dart' as _i13;
+    as _i6;
+import 'package:fitness_dashboard_ui/widgets/loginpage.dart' as _i9;
+import 'package:fitness_dashboard_ui/widgets/mobileloginpage.dart' as _i3;
+import 'package:fitness_dashboard_ui/widgets/moisture.page.dart' as _i7;
+import 'package:fitness_dashboard_ui/widgets/soilNPK.page.dart' as _i10;
+import 'package:flutter/cupertino.dart' as _i13;
+import 'package:flutter/material.dart' as _i12;
 
-abstract class $AppRouter extends _i12.RootStackRouter {
+abstract class $AppRouter extends _i11.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i12.PageFactory> pagesMap = {
+  final Map<String, _i11.PageFactory> pagesMap = {
     AuthcheckPage.name: (routeData) {
-      return _i12.AutoRoutePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i1.AuthcheckPage(),
       );
     },
     CommonGraphPage.name: (routeData) {
       final args = routeData.argsAs<CommonGraphPageArgs>();
-      return _i12.AutoRoutePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i2.CommonGraphPage(
           key: args.key,
@@ -47,68 +46,62 @@ abstract class $AppRouter extends _i12.RootStackRouter {
         ),
       );
     },
-    HomePage.name: (routeData) {
-      return _i12.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i3.HomePage(),
-      );
-    },
     MobileLoginPage.name: (routeData) {
-      return _i12.AutoRoutePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.MobileLoginPage(),
+        child: const _i3.MobileLoginPage(),
       );
     },
     ResponsivePage.name: (routeData) {
-      return _i12.AutoRoutePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i5.ResponsivePage(),
+        child: const _i4.ResponsivePage(),
       );
     },
     ServerErrorPage.name: (routeData) {
-      return _i12.AutoRoutePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i6.ServerErrorPage(),
+        child: const _i5.ServerErrorPage(),
       );
     },
     SoilNpkPage.name: (routeData) {
       final args = routeData.argsAs<SoilNpkPageArgs>(
           orElse: () => const SoilNpkPageArgs());
-      return _i12.AutoRoutePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i7.SoilNpkPage(key: args.key),
+        child: _i6.SoilNpkPage(key: args.key),
       );
     },
     WebCommonGraphPage.name: (routeData) {
       final args = routeData.argsAs<WebCommonGraphPageArgs>();
-      return _i12.AutoRoutePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i8.WebCommonGraphPage(
+        child: _i7.WebCommonGraphPage(
           key: args.key,
           index: args.index,
         ),
       );
     },
     WebHomePage.name: (routeData) {
-      return _i12.AutoRoutePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i9.WebHomePage(),
+        child: _i8.WebHomePage(),
       );
     },
     WebLoginPage.name: (routeData) {
       final args = routeData.argsAs<WebLoginPageArgs>(
           orElse: () => const WebLoginPageArgs());
-      return _i12.AutoRoutePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i10.WebLoginPage(key: args.key),
+        child: _i9.WebLoginPage(key: args.key),
       );
     },
     WebSoilNpkPage.name: (routeData) {
       final args = routeData.argsAs<WebSoilNpkPageArgs>(
           orElse: () => const WebSoilNpkPageArgs());
-      return _i12.AutoRoutePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i11.WebSoilNpkPage(key: args.key),
+        child: _i10.WebSoilNpkPage(key: args.key),
       );
     },
   };
@@ -116,8 +109,8 @@ abstract class $AppRouter extends _i12.RootStackRouter {
 
 /// generated route for
 /// [_i1.AuthcheckPage]
-class AuthcheckPage extends _i12.PageRouteInfo<void> {
-  const AuthcheckPage({List<_i12.PageRouteInfo>? children})
+class AuthcheckPage extends _i11.PageRouteInfo<void> {
+  const AuthcheckPage({List<_i11.PageRouteInfo>? children})
       : super(
           AuthcheckPage.name,
           initialChildren: children,
@@ -125,16 +118,16 @@ class AuthcheckPage extends _i12.PageRouteInfo<void> {
 
   static const String name = 'AuthcheckPage';
 
-  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i2.CommonGraphPage]
-class CommonGraphPage extends _i12.PageRouteInfo<CommonGraphPageArgs> {
+class CommonGraphPage extends _i11.PageRouteInfo<CommonGraphPageArgs> {
   CommonGraphPage({
-    _i13.Key? key,
+    _i12.Key? key,
     required int index,
-    List<_i12.PageRouteInfo>? children,
+    List<_i11.PageRouteInfo>? children,
   }) : super(
           CommonGraphPage.name,
           args: CommonGraphPageArgs(
@@ -146,8 +139,8 @@ class CommonGraphPage extends _i12.PageRouteInfo<CommonGraphPageArgs> {
 
   static const String name = 'CommonGraphPage';
 
-  static const _i12.PageInfo<CommonGraphPageArgs> page =
-      _i12.PageInfo<CommonGraphPageArgs>(name);
+  static const _i11.PageInfo<CommonGraphPageArgs> page =
+      _i11.PageInfo<CommonGraphPageArgs>(name);
 }
 
 class CommonGraphPageArgs {
@@ -156,7 +149,7 @@ class CommonGraphPageArgs {
     required this.index,
   });
 
-  final _i13.Key? key;
+  final _i12.Key? key;
 
   final int index;
 
@@ -167,23 +160,9 @@ class CommonGraphPageArgs {
 }
 
 /// generated route for
-/// [_i3.HomePage]
-class HomePage extends _i12.PageRouteInfo<void> {
-  const HomePage({List<_i12.PageRouteInfo>? children})
-      : super(
-          HomePage.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'HomePage';
-
-  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i4.MobileLoginPage]
-class MobileLoginPage extends _i12.PageRouteInfo<void> {
-  const MobileLoginPage({List<_i12.PageRouteInfo>? children})
+/// [_i3.MobileLoginPage]
+class MobileLoginPage extends _i11.PageRouteInfo<void> {
+  const MobileLoginPage({List<_i11.PageRouteInfo>? children})
       : super(
           MobileLoginPage.name,
           initialChildren: children,
@@ -191,13 +170,13 @@ class MobileLoginPage extends _i12.PageRouteInfo<void> {
 
   static const String name = 'MobileLoginPage';
 
-  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i5.ResponsivePage]
-class ResponsivePage extends _i12.PageRouteInfo<void> {
-  const ResponsivePage({List<_i12.PageRouteInfo>? children})
+/// [_i4.ResponsivePage]
+class ResponsivePage extends _i11.PageRouteInfo<void> {
+  const ResponsivePage({List<_i11.PageRouteInfo>? children})
       : super(
           ResponsivePage.name,
           initialChildren: children,
@@ -205,13 +184,13 @@ class ResponsivePage extends _i12.PageRouteInfo<void> {
 
   static const String name = 'ResponsivePage';
 
-  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i6.ServerErrorPage]
-class ServerErrorPage extends _i12.PageRouteInfo<void> {
-  const ServerErrorPage({List<_i12.PageRouteInfo>? children})
+/// [_i5.ServerErrorPage]
+class ServerErrorPage extends _i11.PageRouteInfo<void> {
+  const ServerErrorPage({List<_i11.PageRouteInfo>? children})
       : super(
           ServerErrorPage.name,
           initialChildren: children,
@@ -219,15 +198,15 @@ class ServerErrorPage extends _i12.PageRouteInfo<void> {
 
   static const String name = 'ServerErrorPage';
 
-  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i7.SoilNpkPage]
-class SoilNpkPage extends _i12.PageRouteInfo<SoilNpkPageArgs> {
+/// [_i6.SoilNpkPage]
+class SoilNpkPage extends _i11.PageRouteInfo<SoilNpkPageArgs> {
   SoilNpkPage({
-    _i13.Key? key,
-    List<_i12.PageRouteInfo>? children,
+    _i12.Key? key,
+    List<_i11.PageRouteInfo>? children,
   }) : super(
           SoilNpkPage.name,
           args: SoilNpkPageArgs(key: key),
@@ -236,14 +215,14 @@ class SoilNpkPage extends _i12.PageRouteInfo<SoilNpkPageArgs> {
 
   static const String name = 'SoilNpkPage';
 
-  static const _i12.PageInfo<SoilNpkPageArgs> page =
-      _i12.PageInfo<SoilNpkPageArgs>(name);
+  static const _i11.PageInfo<SoilNpkPageArgs> page =
+      _i11.PageInfo<SoilNpkPageArgs>(name);
 }
 
 class SoilNpkPageArgs {
   const SoilNpkPageArgs({this.key});
 
-  final _i13.Key? key;
+  final _i12.Key? key;
 
   @override
   String toString() {
@@ -252,12 +231,12 @@ class SoilNpkPageArgs {
 }
 
 /// generated route for
-/// [_i8.WebCommonGraphPage]
-class WebCommonGraphPage extends _i12.PageRouteInfo<WebCommonGraphPageArgs> {
+/// [_i7.WebCommonGraphPage]
+class WebCommonGraphPage extends _i11.PageRouteInfo<WebCommonGraphPageArgs> {
   WebCommonGraphPage({
-    _i13.Key? key,
+    _i12.Key? key,
     required int index,
-    List<_i12.PageRouteInfo>? children,
+    List<_i11.PageRouteInfo>? children,
   }) : super(
           WebCommonGraphPage.name,
           args: WebCommonGraphPageArgs(
@@ -269,8 +248,8 @@ class WebCommonGraphPage extends _i12.PageRouteInfo<WebCommonGraphPageArgs> {
 
   static const String name = 'WebCommonGraphPage';
 
-  static const _i12.PageInfo<WebCommonGraphPageArgs> page =
-      _i12.PageInfo<WebCommonGraphPageArgs>(name);
+  static const _i11.PageInfo<WebCommonGraphPageArgs> page =
+      _i11.PageInfo<WebCommonGraphPageArgs>(name);
 }
 
 class WebCommonGraphPageArgs {
@@ -279,7 +258,7 @@ class WebCommonGraphPageArgs {
     required this.index,
   });
 
-  final _i13.Key? key;
+  final _i12.Key? key;
 
   final int index;
 
@@ -290,9 +269,9 @@ class WebCommonGraphPageArgs {
 }
 
 /// generated route for
-/// [_i9.WebHomePage]
-class WebHomePage extends _i12.PageRouteInfo<void> {
-  const WebHomePage({List<_i12.PageRouteInfo>? children})
+/// [_i8.WebHomePage]
+class WebHomePage extends _i11.PageRouteInfo<void> {
+  const WebHomePage({List<_i11.PageRouteInfo>? children})
       : super(
           WebHomePage.name,
           initialChildren: children,
@@ -300,15 +279,15 @@ class WebHomePage extends _i12.PageRouteInfo<void> {
 
   static const String name = 'WebHomePage';
 
-  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i10.WebLoginPage]
-class WebLoginPage extends _i12.PageRouteInfo<WebLoginPageArgs> {
+/// [_i9.WebLoginPage]
+class WebLoginPage extends _i11.PageRouteInfo<WebLoginPageArgs> {
   WebLoginPage({
-    _i14.Key? key,
-    List<_i12.PageRouteInfo>? children,
+    _i13.Key? key,
+    List<_i11.PageRouteInfo>? children,
   }) : super(
           WebLoginPage.name,
           args: WebLoginPageArgs(key: key),
@@ -317,14 +296,14 @@ class WebLoginPage extends _i12.PageRouteInfo<WebLoginPageArgs> {
 
   static const String name = 'WebLoginPage';
 
-  static const _i12.PageInfo<WebLoginPageArgs> page =
-      _i12.PageInfo<WebLoginPageArgs>(name);
+  static const _i11.PageInfo<WebLoginPageArgs> page =
+      _i11.PageInfo<WebLoginPageArgs>(name);
 }
 
 class WebLoginPageArgs {
   const WebLoginPageArgs({this.key});
 
-  final _i14.Key? key;
+  final _i13.Key? key;
 
   @override
   String toString() {
@@ -333,11 +312,11 @@ class WebLoginPageArgs {
 }
 
 /// generated route for
-/// [_i11.WebSoilNpkPage]
-class WebSoilNpkPage extends _i12.PageRouteInfo<WebSoilNpkPageArgs> {
+/// [_i10.WebSoilNpkPage]
+class WebSoilNpkPage extends _i11.PageRouteInfo<WebSoilNpkPageArgs> {
   WebSoilNpkPage({
-    _i13.Key? key,
-    List<_i12.PageRouteInfo>? children,
+    _i12.Key? key,
+    List<_i11.PageRouteInfo>? children,
   }) : super(
           WebSoilNpkPage.name,
           args: WebSoilNpkPageArgs(key: key),
@@ -346,14 +325,14 @@ class WebSoilNpkPage extends _i12.PageRouteInfo<WebSoilNpkPageArgs> {
 
   static const String name = 'WebSoilNpkPage';
 
-  static const _i12.PageInfo<WebSoilNpkPageArgs> page =
-      _i12.PageInfo<WebSoilNpkPageArgs>(name);
+  static const _i11.PageInfo<WebSoilNpkPageArgs> page =
+      _i11.PageInfo<WebSoilNpkPageArgs>(name);
 }
 
 class WebSoilNpkPageArgs {
   const WebSoilNpkPageArgs({this.key});
 
-  final _i13.Key? key;
+  final _i12.Key? key;
 
   @override
   String toString() {

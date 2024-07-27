@@ -18,59 +18,57 @@ class WebHomePage extends StatelessWidget {
     GetxPageControler controller = Get.put(GetxPageControler());
     final isDesktop = Responsive.isDesktop(context);
 
-    return Scaffold(
-      body: GetBuilder<GetxPageControler>(builder: (_) {
-        return Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          // decoration: BoxDecoration(
-          //   image: controller.islightmode
-          //       ? DecorationImage(
-          //           opacity: 0.2,
-          //           image: AssetImage('assets/images/bg.png'),
-          //           fit: BoxFit.cover)
-          //       : null,
-          // ),
-          child: SafeArea(
-            child: controller.issettiing || controller.issignout
-                ? Row(
-                    children: [
-                      if (isDesktop)
-                        Expanded(
-                          flex: 2,
-                          child: SizedBox(
-                            child: SideMenuWidget(),
-                          ),
-                        ),
+    return GetBuilder<GetxPageControler>(builder: (_) {
+      return Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        // decoration: BoxDecoration(
+        //   image: controller.islightmode
+        //       ? DecorationImage(
+        //           opacity: 0.2,
+        //           image: AssetImage('assets/images/bg.png'),
+        //           fit: BoxFit.cover)
+        //       : null,
+        // ),
+        child: SafeArea(
+          child: controller.issettiing || controller.issignout
+              ? Row(
+                  children: [
+                    if (isDesktop)
                       Expanded(
-                        flex: 10,
-                        child: ThemePage(),
-                      ),
-                    ],
-                  )
-                : Row(
-                    children: [
-                      if (isDesktop)
-                        Expanded(
-                          flex: 2,
-                          child: SizedBox(
-                            child: SideMenuWidget(),
-                          ),
+                        flex: 2,
+                        child: SizedBox(
+                          child: SideMenuWidget(),
                         ),
+                      ),
+                    Expanded(
+                      flex: 10,
+                      child: ThemePage(),
+                    ),
+                  ],
+                )
+              : Row(
+                  children: [
+                    if (isDesktop)
                       Expanded(
-                        flex: 7,
-                        child: DashboardWidget(),
-                      ),
-                      if (isDesktop)
-                        Expanded(
-                          flex: 3,
-                          child: SummaryWidget(),
+                        flex: 2,
+                        child: SizedBox(
+                          child: SideMenuWidget(),
                         ),
-                    ],
-                  ),
-          ),
-        );
-      }),
-    );
+                      ),
+                    Expanded(
+                      flex: 7,
+                      child: DashboardWidget(),
+                    ),
+                    if (isDesktop)
+                      Expanded(
+                        flex: 3,
+                        child: SummaryWidget(),
+                      ),
+                  ],
+                ),
+        ),
+      );
+    });
   }
 }

@@ -76,7 +76,9 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
         onTap: () {
           if (index == 2) {
             log('Close Drwawer');
-            controller.closedrawer();
+            if (!Responsive.isDesktop(context)) {
+              controller.closedrawer();
+            }
             showDialog(
               context: context,
               builder: (context) => AlertDialog(
@@ -86,7 +88,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                   ElevatedButton(
                     onPressed: () {
                       controller.signout();
-                      context.router.replaceNamed('/');
+                      context.router.maybePop(false);
                     },
                     child: const Text('Yes'),
                   ),
@@ -99,7 +101,9 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
             );
           } else {
             log('Close Drwawer');
-            controller.closedrawer();
+            if (!Responsive.isDesktop(context)) {
+              controller.closedrawer();
+            }
             controller.changewidget(index: index);
           }
         },

@@ -8,19 +8,8 @@ import 'package:fitness_dashboard_ui/widgets/side_menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ThemePage extends StatefulWidget {
+class ThemePage extends StatelessWidget {
   ThemePage({super.key});
-
-  @override
-  State<ThemePage> createState() => _ThemePageState();
-}
-
-class _ThemePageState extends State<ThemePage> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +17,6 @@ class _ThemePageState extends State<ThemePage> {
     GetxTapController controller2 = Get.put(GetxTapController());
 
     return Scaffold(
-      key: controller.scaffoldKey,
       drawer: Responsive.isMobile(context) || Responsive.isTablet(context)
           ? SizedBox(
               width: 252,
